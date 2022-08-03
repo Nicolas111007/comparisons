@@ -15,8 +15,8 @@ class CreateEnergyTypeTable extends Migration
     {
         Schema::create('energy_type', function (Blueprint $table) {
             $table->id();
-            $table->string('energy_name');
-            $table->string('energy_abbr');
+            $table->string('energy_name')->length(15);
+            $table->string('energy_abbr')->length(3);
         });
     }
 

@@ -15,8 +15,8 @@ class CreatePcLocalityTable extends Migration
     {
         Schema::create('pc_locality', function (Blueprint $table) {
             $table->id();
-            $table->string('pc');
-            $table->string('locality');
+            $table->char('pc')->length(4);
+            $table->string('locality')->length(50);
         });
     }
 

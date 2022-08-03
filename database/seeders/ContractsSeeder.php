@@ -17,7 +17,9 @@ class ContractsSeeder extends Seeder
     public function run()
     {
         //Empty the table first
-        Contracts::truncate();
+         DB::statement('SET FOREIGN_KEY_CHECKS=0');
+         Contracts::truncate();
+         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         //Define data
         $contracts = [
@@ -131,12 +133,12 @@ class ContractsSeeder extends Seeder
             ['suppliers_id'=>'10','energy_type_id'=> '2','contract_name'=> 'Simplement Gaz','var_fix'=>'0','time_contract'=>'3','abbreviation'=> 'pawgsg','active_contract'=>'0'],
             ['suppliers_id'=>'9','energy_type_id'=> '1','contract_name'=> 'Flex','var_fix'=>'0','time_contract'=>'3','abbreviation'=> 'paoefl','active_contract'=>'0'],
             ['suppliers_id'=>'5','energy_type_id'=> '1','contract_name'=> 'Électricité Fixe Vert Solar 3 ans','var_fix'=>'1','time_contract'=>'36','abbreviation'=> 'paeefvs3','active_contract'=>'0'],
-            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabeb','active_contract'=>'1'],
-            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt Go','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabebg','active_contract'=>'1'],
-            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt Online','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabebo','active_contract'=>'1'],
-            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabgb','active_contract'=>'1'],
-            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt Go','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabgbg','active_contract'=>'1'],
-            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt Online','var_fix'=>' NULL','time_contract'=>' NULL','abbreviation'=> 'pabgbo','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabeb','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt Go','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabebg','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '1','contract_name'=> 'Bolt Online','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabebo','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabgb','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt Go','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabgbg','active_contract'=>'1'],
+            ['suppliers_id'=>'11','energy_type_id'=> '2','contract_name'=> 'Bolt Online','var_fix'=>' 0','time_contract'=>' 1','abbreviation'=> 'pabgbo','active_contract'=>'1'],
             ['suppliers_id'=>'8','energy_type_id'=> '1','contract_name'=> 'Comfy Fixe 1 an','var_fix'=>'1','time_contract'=>'12','abbreviation'=> 'pamecf','active_contract'=>'0'],
             ['suppliers_id'=>'8','energy_type_id'=> '1','contract_name'=> 'Comfy Variable 1 an','var_fix'=>'0','time_contract'=>'1','abbreviation'=> 'pamecv','active_contract'=>'0'],
             ['suppliers_id'=>'8','energy_type_id'=> '2','contract_name'=> 'Comfy Fixe 1 an','var_fix'=>'1','time_contract'=>'12','abbreviation'=> 'pamgcf','active_contract'=>'0'],

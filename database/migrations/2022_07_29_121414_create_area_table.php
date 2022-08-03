@@ -15,8 +15,8 @@ class CreateAreaTable extends Migration
     {
         Schema::create('area', function (Blueprint $table) {
             $table->id();
-            $table->string('area_name');
-            $table->string('abbreviation');
+            $table->string('area_name')->length(9);
+            $table->string('abbreviation')->length(3);
         });
     }
 

@@ -17,7 +17,9 @@ class SuppliersSeeder extends Seeder
     public function run()
     {
         //Empty the table first
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Suppliers::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         //Define data
         $suppliers = [
