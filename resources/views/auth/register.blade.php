@@ -53,6 +53,18 @@
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>
+                
+            </div>
+            <div>
+            <h1 class="text-xl font-bold underline text-[#fef08a]">
+    Hello world!
+  </h1>
+  <h1 class="text-lg font-bold underline">
+    Hello world!
+  </h1>
+  <h1 class="text-sm font-bold underline">
+    Hello world!
+  </h1>
             </div>
         </form>
     </x-auth-card>
