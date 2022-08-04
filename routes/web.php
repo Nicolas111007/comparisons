@@ -21,4 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/compare', function () {
+    return view('compare');
+})->name('compare');
+
 require __DIR__.'/auth.php';

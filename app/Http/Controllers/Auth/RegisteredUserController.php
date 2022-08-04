@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Civility;
+use App\Models\PcLocality;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +22,15 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $users=User::all();
+        $civility=Civility::all();
+        $locality=PcLocality::all();
+        
+        return view('auth.register',[
+            'users'=> $users,
+            'civility'=> $civility,
+            'locality'=> $locality,
+        ]);
     }
 
     /**
@@ -34,15 +44,35 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'civility_id' => ['required', 'int', 'max:20'],
+            'pc_locality_id' => ['required', 'int', 'max:20'],
+            'area_id' => ['int', 'max:20'],
+            'name' => ['required', 'string', 'max:100'],
+            'first_name' => ['required', 'string', 'max:100'],
+            'birth_date' => ['required', 'date'],
+            'email' => ['required', 'string', 'email', 'max:254', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            //'housephone' => ['string', 'max:9'],
+            //'mobilephone' => ['string', 'max:10'],
+            'unique_id' => ['string', 'max:32'],
+            'active' => ['int', 'max:1'],
+            'subscriber' => ['int', 'max:1'],
         ]);
 
         $user = User::create([
+            'civility_id' => $request->civility_id,
+            'pc_locality_id' => $request->pc_locality_id,
+            'area_id' => "1",
             'name' => $request->name,
+            'first_name' => $request->first_name,
+            'birth_date' => $request->birth_date,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            //'housephone' => $request->housephone,
+            //'mobilephone' => $request->mobilephone,
+            'unique_id' => md5(uniqid()),
+            'active' => "1",
+            'subscriber' => "0",
         ]);
 
         event(new Registered($user));
