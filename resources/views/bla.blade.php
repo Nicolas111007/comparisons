@@ -22,33 +22,10 @@
         </style>
     </head>
     <body class="antialiased">
-    <form method="POST" action="{{ route('compare') }}">
-            @csrf
-            
-            <!-- ______________________Locality -->
-
-            <div>
-                <x-label for="pc_locality_id" :value="__('Locality')" />
-                <select id="pc_locality_id" name="pc_locality_id">
-                    <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
-                    @foreach ($locality as $locality)
-                        <option value={{$locality->id}}>{{$locality->pc}}  {{$locality->locality}}</option>
-                    @endforeach
-                </select>
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            Hello World!
             </div>
-
-            
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-                
-            </div>
-        </form>
+        </div>
     </body>
 </html>

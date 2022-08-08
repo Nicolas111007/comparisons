@@ -29,4 +29,10 @@ class Suppliers extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function contracts()
+    {
+        return $this->hasMany(Contracts::class);
+    }
+
 }

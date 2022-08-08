@@ -18,6 +18,8 @@ class CreatePricesTable extends Migration
             $table->foreignId('contract_id');
             $table->foreignId('area_id');
             $table->foreignId('energy_type_id');
+            $table->foreignId('suppliers_id');
+            $table->boolean('var_fix');
             $table->decimal('subscription',11,7);
             $table->decimal('mono',11,7);
             $table->decimal('bi_day',11,7)->nullable();
@@ -31,6 +33,8 @@ class CreatePricesTable extends Migration
             $table->foreign('area_id')->references('id')->on('area')
                     ->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('energy_type_id')->references('id')->on('energy_type')
+                    ->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('suppliers_id')->references('id')->on('suppliers')
                     ->onDelete('restrict')->onUpdate('cascade');
         });
     }
