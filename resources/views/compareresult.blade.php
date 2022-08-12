@@ -125,7 +125,11 @@
                         <td class="border border-slate-600">{{$contbeggas}}</td>
                     </tr>
                 </table>
-
+                
+                    <div class="flex items-center justify-end mt-4">
+                    <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-sky-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('compare')}}" class="btn btn-success">Nouvelle comparaison</a>
+                    </div>
+                
                 <div>
                     <p class="text-center underline font-bold text-sky-400">Prix de vos contrat</p>
                     <div class="mt-6">
@@ -200,7 +204,7 @@
                                             </table>
 
                                         
-                                        @elseif ($prices2['var_fix']==1 && $prices2['contract_id']==$suppliercont && $prices2['date_price_val']==$contbeg && $prices2['area_id']==$area)
+                                        @elseif ($prices2['var_fix']==1 && $prices2['contract_id']==$suppliercont && $prices2['date_price_val']==$contbegmod && $prices2['area_id']==$area)
                                             <table class="bg-blue-400 w-full">
                                                 <tr>
                                                     <th class="border border-slate-600" colspan=3>Électricité</th>
@@ -273,8 +277,8 @@
                                     @endforeach
                                     
                                     @if ($i==count($prices))
-                                        <h3 class="underline font-bold text-sky-400">Électricité</h3>
-                                        <p class="font-bold text-red-600">Ce contrat n'existe pas dans votre région</p>
+                                        <h3 class="underline font-bold text-sky-400 text-center">Électricité</h3>
+                                        <p class="font-bold text-red-600 text-center">Ce contrat n'existe pas dans votre région</p>
                                     @endif
                                 </td>
                                 
@@ -357,7 +361,7 @@
                                             </table>
 
                                         
-                                        @elseif ($prices2['var_fix']==1 && $prices2['contract_id']==$suppliercontgas && $prices2['date_price_val']==$contbeggas && $prices2['area_id']==$area)
+                                        @elseif ($prices2['var_fix']==1 && $prices2['contract_id']==$suppliercontgas && $prices2['date_price_val']==$contbeggasmod && $prices2['area_id']==$area)
                                             <table class="bg-blue-400 w-full">
                                             <tr>
                                                     <th class="border border-slate-600" colspan=3>Gaz</th>
@@ -434,14 +438,14 @@
 
                                         @else
                                             @php
-                                                $i++;
+                                                $j++;
                                             @endphp
                                         @endif
                                     @endforeach
                                     
-                                    @if ($i==count($prices))
-                                        <h3 class="underline font-bold text-sky-400">Électricité</h3>
-                                        <p class="font-bold text-red-600">Ce contrat n'existe pas dans votre région</p>
+                                    @if ($j==count($prices))
+                                        <h3 class="underline font-bold text-sky-400 text-center">Gaz</h3>
+                                        <p class="font-bold text-red-600 text-center">Ce contrat n'existe pas dans votre région</p>
                                     @endif
                                 </td>
                             </tr>
@@ -452,10 +456,7 @@
                 <div>
                     <p class="text-center underline font-bold text-sky-400">Comparaison</p>
                     
-                    <p>ID contrat électricité {{$suppliercont}}</p>
-                    <p>ID contrat gaz {{$suppliercontgas}}</p>
                     
-                    <div class="mt-6">
                         <table class="border-collapse w-full">
                             <tr>
                                 <td class="align-top">
@@ -536,80 +537,139 @@
                                                 
                                             </tr>
 
-                                            @foreach ($prices as $prices7a)
+                                            @if ($i==count($prices) && $j==count($prices))
+                                                <tr>
+                                                    <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                    @if ($binight==0)
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                    @else
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                    @endif
+                                                </tr>
+                                                @elseif ($i==count($prices)-1 && $j==count($prices))
+                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                    @if ($binight==0)
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                    @else
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                    @endif
                                                     
-                                                @if ($prices7a['var_fix']==0 && $prices7a['contract_id']==$suppliercont && $prices7a['date_price_val']=='2022-04-01' && $prices7a['area_id']==$area)
-                                                    @if ($binight==0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
-                                                            <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
-                                                        </tr>
+                                            @elseif ($i==count($prices) && $j==count($prices)-1)
+                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                    @if ($binight==0)
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
                                                     @else
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
-                                                        </tr>
+                                                        <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
                                                     @endif
-                                                @elseif ($prices7a['var_fix']==1 && $prices7a['contract_id']==$suppliercont && $prices7a['date_price_val']==$contbeg && $prices7a['area_id']==$area)
-                                                    @if ($binight==0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
-                                                            <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
-                                                        </tr>
-                                                    @else
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
-                                                        </tr>
-                                                    @endif
-                                                @endif
+                                                    
+                                            @else
+                                                @foreach ($prices as $prices7a)
+                                                        
+                                                    @if ($prices7a['var_fix']==0 && $prices7a['contract_id']==$suppliercont && $prices7a['date_price_val']=='2022-04-01' && $prices7a['area_id']==$area)
+                                                        @if ($binight==0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @elseif ($binight!=0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @endif
+                                                    @elseif ($prices7a['var_fix']==1 && $prices7a['contract_id']==$suppliercont && $prices7a['date_price_val']==$contbegmod && $prices7a['area_id']==$area)
+                                                        @if ($binight==0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['mono'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['mono'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @elseif ($binight!=0 && ($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']))<($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']))-($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy'])),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_elec_prices_compare['subscription']+($monobiday*$sorted_elec_prices_compare['bi_day'])+($binight*$sorted_elec_prices_compare['bi_night'])+($exclnight*$sorted_elec_prices_compare['excl_night'])+(($monobiday+$binight+$exclnight)*$sorted_elec_prices_compare['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($monobiday*$prices7a['bi_day'])+($binight*$prices7a['bi_night'])+($exclnight*$prices7a['excl_night'])+(($monobiday+$binight+$exclnight)*$prices7a['g_and_c_energy']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
+                                                            </tr>
 
-                                            
-                                            @endforeach
+                                                            
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endif
 
                                         </table>
                                     @endforeach
@@ -661,9 +721,8 @@
                                                     
                                             @else
                                                 <tr>
-                                                    <td class="border border-slate-600">Bi-horaire nuit</td>
-                                                    <td class="border border-slate-600 text-right">{{number_format(round($sorted_gas_prices_compare['bi_night'],4),4,',','.')}} €</td>
-                                                    <td class="border border-slate-600 text-right">{{number_format(round($binight*$sorted_gas_prices_compare['bi_night'],2),2,',','.')}} €</td>
+                                                    <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                    <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
                                                 </tr>
                                             @endif
                                             
@@ -671,10 +730,8 @@
                                                     
                                             @else
                                                 <tr>
-                                                    <td class="border border-slate-600">Exclusif nuit</td>
-                                                    <td class="border border-slate-600 text-right">{{number_format(round($sorted_gas_prices_compare['excl_night'],4),4,',','.')}} €</td>
-                                                    <td class="border border-slate-600 text-right">{{number_format(round($exclnight*$sorted_gas_prices_compare['excl_night'],2),2,',','.')}} €</td>
-                                                    
+                                                    <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                    <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
                                                 </tr>
                                             @endif
                                             <tr>
@@ -682,88 +739,105 @@
                                                 <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
                                             </tr>
 
-                                            @foreach ($prices as $prices7a)
+                                            @if ($i==count($prices) && $j==count($prices))
+                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                            @elseif ($i==count($prices)-1 && $j==count($prices))
+                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
                                                     
-                                                @if ($prices7a['var_fix']==0 && $prices7a['contract_id']==$suppliercontgas && $prices7a['date_price_val']=='2022-04-01' && $prices7a['area_id']==$area)
-                                                    @if ($binight==0 && ($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))<($prices7a['subscription']+($gascons*$prices7a['mono'])))
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
-                                                            <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($gascons*$prices7a['mono'])-($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
-                                                        </tr>
-                                                    @else
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
-                                                        </tr>
+                                            @elseif ($i==count($prices) && $j==count($prices)-1)
+                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                                    
+                                            @else
+
+                                                @foreach ($prices as $prices7a)
+                                                        
+                                                    @if ($prices7a['var_fix']==0 && $prices7a['contract_id']==$suppliercontgas && $prices7a['date_price_val']=='2022-04-01' && $prices7a['area_id']==$area)
+                                                        @if (($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))<($prices7a['subscription']+($gascons*$prices7a['mono'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($gascons*$prices7a['mono'])-($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @endif
+                                                    @elseif ($prices7a['var_fix']==1 && $prices7a['contract_id']==$suppliercontgas && $prices7a['date_price_val']==$contbeggasmod && $prices7a['area_id']==$area)
+                                                        @if (($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))<($prices7a['subscription']+($gascons*$prices7a['mono'])))
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
+                                                                <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($gascons*$prices7a['mono'])-($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold" colspan=2>Total</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
+                                                                <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
+                                                            </tr>
+                                                        @endif
                                                     @endif
-                                                @elseif ($prices7a['var_fix']==1 && $prices7a['contract_id']==$suppliercontgas && $prices7a['date_price_val']==$contbeggas && $prices7a['area_id']==$area)
-                                                    @if ($binight==0 && ($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))<($prices7a['subscription']+($gascons*$prices7a['mono'])))
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Économie</td>
-                                                            <td class="border border-slate-600 text-right font-bold">{{number_format(round(($prices7a['subscription']+($gascons*$prices7a['mono'])-($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']))),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-white font-bold" colspan=3>Ce contrat est plus avantageux que votre contrat actuel</td>
-                                                        </tr>
-                                                    @else
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold" colspan=2>Total</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-red-800 font-bold">{{number_format(round($sorted_gas_prices_compare['subscription']+($gascons*$sorted_gas_prices_compare['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600" colspan=2>Prix de votre contrat actuel</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-green-700 font-bold">{{number_format(round($prices7a['subscription']+($gascons*$prices7a['mono']),2),2,',','.')}} €</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 font-bold text-transparent" colspan=2>-</td>
-                                                            <td class="border border-slate-600 text-right font-bold text-transparent">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="border border-slate-600 text-red-800 font-bold" colspan=3>Ce contrat est moins avantageux que votre contrat actuel</td>
-                                                        </tr>
-                                                    @endif
-                                                @endif
+
+                                                
+                                                @endforeach
+                                            @endif
+
+
+
 
                                             
-                                            @endforeach
-
-
                                         </table>
                                     @endforeach
                                 </td>
                             </tr>
                         </table>
-                </div>
+                
                 
                 
                 

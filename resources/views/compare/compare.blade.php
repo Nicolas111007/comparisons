@@ -271,7 +271,7 @@
                     <div class="flex items-center justify-end mt-4">
                         
 
-                        <x-button class="ml-4 bg-sky-400">
+                        <x-button class="ml-4 hover:bg-sky-400 ">
                             {{ __('Comparer') }}
                         </x-button>
                         

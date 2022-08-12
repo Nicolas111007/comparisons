@@ -70,9 +70,17 @@ class CompareResultController extends Controller
         $exclnight=$_POST['exclnight'];
         $suppliercont=$_POST['suppliercont'];
         $contbeg=$_POST['contbeg'];
+        $explodedcontbeg=explode ('-', $_POST['contbeg']);
+        if ($explodedcontbeg[2]!='01') {
+            $contbegmod=$explodedcontbeg[0] . '-' . $explodedcontbeg[1] . '-01';
+        }
         $gascons=$_POST['gascons'];
         $suppliercontgas=$_POST['suppliercontgas'];
         $contbeggas=$_POST['contbeggas'];
+        $explodedcontbeggas=explode ('-', $_POST['contbeggas']);
+        if ($explodedcontbeggas[2]!='01') {
+            $contbeggasmod=$explodedcontbeggas[0] . '-' . $explodedcontbeggas[1] . '-01';
+        }
         $prices=Prices::all();
         $elec_prices_compare=Prices::all();
         $gas_prices_compare=Prices::all();
@@ -153,6 +161,7 @@ class CompareResultController extends Controller
             }
         }
         $i=0;
+        $j=0;
         return view('compareresult', [
             'area'=>$area,
             'monobiday'=>$monobiday,
@@ -160,9 +169,11 @@ class CompareResultController extends Controller
             'exclnight'=>$exclnight,
             'suppliercont'=>$suppliercont,
             'contbeg'=>$contbeg,
+            'contbegmod'=>$contbegmod,
             'gascons'=>$gascons,
             'suppliercontgas'=>$suppliercontgas,
             'contbeggas'=>$contbeggas,
+            'contbeggasmod'=>$contbeggasmod,
             'prices'=>$prices,
             'contracts1'=>$contracts1,
             'contracts'=>$contracts,
@@ -176,6 +187,7 @@ class CompareResultController extends Controller
             'gas_suppliers'=>$gas_suppliers,
             'area2'=>$area2,
             'i'=>$i,
+            'j'=>$j,
             'sorted_elec_prices_compare'=>$sorted_elec_prices_compare,
             'sorted_gas_prices_compare'=>$sorted_gas_prices_compare,
         ]);
