@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompareController;
+use App\Http\Controllers\CompareResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/compare', [CompareController::class, 'create'])
+    ->name('compare');
+
+Route::put('/compareresult', [CompareResultController::class, 'store'])
+    ->name('compareresult.store');
 
 require __DIR__.'/auth.php';

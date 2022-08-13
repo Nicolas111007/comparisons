@@ -23,18 +23,18 @@ class SuppliersSeeder extends Seeder
 
         //Define data
         $suppliers = [
-            ['supplier_name'=>'Antargaz'],
-            ['supplier_name'=>'Eneco'],
-            ['supplier_name'=>'Energie2030'],
-            ['supplier_name'=>'Engie'],
-            ['supplier_name'=>'Essent'],
-            ['supplier_name'=>'Lampiris'],
-            ['supplier_name'=>'Luminus'],
-            ['supplier_name'=>'Mega'],
-            ['supplier_name'=>'Octa +'],
-            ['supplier_name'=>'Watz'],
-            ['supplier_name'=>'Bolt'],
-            ['supplier_name'=>'Energie.be'],
+            ['supplier_name'=>'Antargaz','active_supplier'=>'1'],
+            ['supplier_name'=>'Eneco','active_supplier'=>'1'],
+            ['supplier_name'=>'Energie2030','active_supplier'=>'1'],
+            ['supplier_name'=>'Engie','active_supplier'=>'1'],
+            ['supplier_name'=>'Essent','active_supplier'=>'0'],
+            ['supplier_name'=>'Lampiris','active_supplier'=>'1'],
+            ['supplier_name'=>'Luminus','active_supplier'=>'1'],
+            ['supplier_name'=>'Mega','active_supplier'=>'1'],
+            ['supplier_name'=>'Octa +','active_supplier'=>'1'],
+            ['supplier_name'=>'Watz','active_supplier'=>'0'],
+            ['supplier_name'=>'Bolt','active_supplier'=>'1'],
+            ['supplier_name'=>'Energie.be','active_supplier'=>'1'],
         ];
             
         //Insert data in the table

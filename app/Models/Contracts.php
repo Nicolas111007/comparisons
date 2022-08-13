@@ -29,4 +29,10 @@ class Contracts extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function suppliers()
+    {
+        return $this->belongsTo(Suppliers::class);
+    }
+
 }
