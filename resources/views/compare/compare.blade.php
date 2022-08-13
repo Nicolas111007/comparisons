@@ -22,6 +22,79 @@
         </style>
     </head>
     <body class="antialiased">
+        
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                    <a class="hover:underline" href="/" :active="request()->routeIs('/')">
+                        {{ __('Accueil') }}
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                    <a class="hover:underline" href="compare" :active="request()->routeIs('compare')">
+                        {{ __('Comparateur') }}
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                    <a class="hover:underline" href="faq" :active="request()->routeIs('faq')">
+                        {{ __('FAQ') }}
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                    <a class="hover:underline" href="contact" :active="request()->routeIs('contact')">
+                        {{ __('Contact') }}
+                    </a>
+                </div>
+
+                @if (Auth::check())
+                    <!-- Navigation Links -->
+                    <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                        <a class="hover:underline" href="dashboard" :active="request()->routeIs('dashboard')">
+                            {{ __('Mon compte') }}
+                        </a>
+                    </div>
+                @elseif (Auth::guest())
+                    <!-- Navigation Links -->
+                    <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                        <a class="hover:underline" href="register" :active="request()->routeIs('register')">
+                            {{ __('Inscription') }}
+                        </a>
+                    </div>
+                @endif
+
+                <!-- Test logout -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-nav-link :href="route('logout')" :active="request()->routeIs('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-nav-link>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
             <form class="mt-8 space-y-6" method="POST" action="{{ route('compareresult') }}">

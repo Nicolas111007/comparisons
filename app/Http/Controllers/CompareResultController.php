@@ -73,6 +73,8 @@ class CompareResultController extends Controller
         $explodedcontbeg=explode ('-', $_POST['contbeg']);
         if ($explodedcontbeg[2]!='01') {
             $contbegmod=$explodedcontbeg[0] . '-' . $explodedcontbeg[1] . '-01';
+        } else {
+            $contbegmod=$contbeg;
         }
         $gascons=$_POST['gascons'];
         $suppliercontgas=$_POST['suppliercontgas'];
@@ -80,6 +82,8 @@ class CompareResultController extends Controller
         $explodedcontbeggas=explode ('-', $_POST['contbeggas']);
         if ($explodedcontbeggas[2]!='01') {
             $contbeggasmod=$explodedcontbeggas[0] . '-' . $explodedcontbeggas[1] . '-01';
+        } else {
+            $contbeggasmod=$contbeggas;
         }
         $prices=Prices::all();
         $elec_prices_compare=Prices::all();
