@@ -26,23 +26,53 @@
         @include('menu')
         
         <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
-            
             <div class="flex justify-center">
-                <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>
-                    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 text-center underline">Pour bénéficier des dernières informations, vous avez la pouvez opter pour un abonnement annuel d'un montant de 60,00 €</div>
+                <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Pourquoi utiliser Comparateur Gaz et Électricité</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ce site vous permettra de savoir s'il est ou non utile de changer actuellement de contrat au vu du prix de votre contrat actuel.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le service est gratuit et se base sur votre consommation réelle.</p>
                 </div>
             </div>
-
+        </div>
+        <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
             <div class="flex justify-center">
-                <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                    <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">Vous aurez alors notamment la possibilité:</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu des nouveaux tarifs des fournisseurs</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- De recevoir les dernières informations sur les marchés de l'énergie</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu lorsque les tarifs sont en baisse</div>
-                    <div class="flex items-center justify-center mt-4">
-                        <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('subscribe')}}" class="btn btn-success">Je m'abonne</a>
-                    </div>
+                <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">D'où proviennent les données utilisées par le comparateur</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Toutes les données proviennent des différents fournisseurs et de leurs cartes tarifaires.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+            <div class="flex justify-center">
+                <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Est-ce que l'utilisation du comparateur est gratuite</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Oui, quoi qu'il arrive vous ne payez pas pour effectuer votre comparaison</p>
+                </div>
+            </div>
+        </div>
+        <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+            <div class="flex justify-center">
+                <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">J'ai effectué plusieurs comparaisons sur plusieurs sites et les montants varient, pourquoi?</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Tout d'abord, ce comparateur ne fait une comparaison que sur les prix des fournisseurs, ce qui implique que les tarifs de réseaux et distribution, ainsi que les diverses taxes fédérales ne sont pas inclues dans ce calcul.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ces tarifs ne sont pas calculés car ils sont exactement les mêmes, peu importe le fournisseur que vous choisissez.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Il se peut toutefois que certains montant diffèrent de quelques centimes, voire quelques euros en fonction du comparateur choisi, certain effectuant des arrondis lors de leurs calculs.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ce site n'effectue pas d'arrondis, excepté sur le résultat final.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+            <div class="flex justify-center">
+                <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Les prix de mon contrat ne concordent pas avec ceux du site, pourquoi?</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Il faut tout d'abord distinguer deux catégories de contrat, à savoir les contrats variables et les contrats fixes.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">Dans le cas des contrats fixes:</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le comparateur prend en compte la date de début de votre contrat pour effectuer une comparaison sur 1 an.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le prix de votre contrat ne varie pas sur la durée de celui-ci.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">Dans le cas des contrats variables:</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le comparateur prend en compte le mois en cours pour effectuer une comparaison sur 1 an.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le prix de votre contrat variant chaque mois il est inutile de comparer un prix d'un mois passé qui n'est plus le prix actuel.</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white"></p>
                 </div>
             </div>
         </div>

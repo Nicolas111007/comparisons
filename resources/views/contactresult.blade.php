@@ -20,32 +20,73 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            function countdown(countdown_time){ // Definition of function
+            if (countdown_time>-1) { // If time is different of -1
+                var hours = Math.floor(countdown_time/3600); // Total hours
+                
+                if(hours >= 24){ // If more than 24 hours ==> 1 day or more
+                    var days = Math.floor(hours/24); // Total days
+                    var minus = 86400*days; // Definition of variable for further use in calculation of minutes and seconds
+                    var hours = hours-(24*days); // Substraction the number of hours corresponding to days to the total of hours
+                }else{
+                    var days = 0; // No days
+                    var minus = 0; // Idem above
+                }
+                
+                minus = minus+3600*hours; // Recalculation of minus
+                var minutes = Math.floor((countdown_time-minus)/60); // Calculation of minutes
+                minus = minus + 60*minutes; // Recalculation of minus
+                var seconds = countdown_time-minus; // Calculation of seconds
+                minutes = ((minutes < 10) ? "0" : "") + minutes;// Adding a 0 if minutes are below 10
+                seconds = ((seconds < 10) ? "0" : "") + seconds; // Adding a 0 if seconds are below 10
+                
+                if(countdown_time>1){
+                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' secondes';
+                    var remain = countdown_time-1; // Substraction of 1 second
+                    setTimeout("countdown("+remain+")", 1000);// Calling function every second
+                } else {
+                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' seconde';
+                    var remain = countdown_time-1; // Substraction of 1 second
+                    setTimeout("countdown("+remain+")", 1000);// Calling function every second
+                }
+                
+            }else{
+            seconds = ((seconds < 1) ? "00" : "");
+            }
+        }
+        jQuery(function($){
+            // Countdown lauching at page loading
+            countdown('15').init();
+        });
+        </script>
     </head>
     <body class="antialiased">
-        
-        @include('menu')
-        
-        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
-            
-            <div class="flex justify-center">
-                <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>
-                    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 text-center underline">Pour bénéficier des dernières informations, vous avez la pouvez opter pour un abonnement annuel d'un montant de 60,00 €</div>
-                </div>
-            </div>
-
-            <div class="flex justify-center">
-                <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                    <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">Vous aurez alors notamment la possibilité:</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu des nouveaux tarifs des fournisseurs</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- De recevoir les dernières informations sur les marchés de l'énergie</div>
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu lorsque les tarifs sont en baisse</div>
-                    <div class="flex items-center justify-center mt-4">
-                        <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('subscribe')}}" class="btn btn-success">Je m'abonne</a>
-                    </div>
-                </div>
-            </div>
+    
+    @include('menu')
+    @php
+        header( "refresh:15;url='/'" );
+    @endphp
+    
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-lg w-full bg-green-200 p-7 rounded-lg">
+            @if ($civility_id==1)
+                <p class="text-center mb-5">Chère Madame {{$name}}, votre message a bien été envoyé !</p>
+            @else
+                <p class="text-center mb-5">Cher Monsieur {{$name}}, votre message a bien été envoyé !</p>
+            @endif
+            <p class="text-center my-5">Nous y répondrons dans les plus brefs délais</p>
+            <p class="text-center mb-5" id="countdown_show"></p>
         </div>
+    </div>
+    <div class="min-h-full flex items-center justify-center pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-lg w-full bg-gray-200 p-7 rounded-lg">
+            <p class="underline text-center">Voici un résumé de ce qui nous est parvenu:</p>
+            <p class="mt-5"><span class="underline font-bold">Votre e-mail:</span> {{$email}}</p>
+            <p class="mt-3"><span class="underline font-bold">L'objet de votre message:</span> {{$messobject}}</p>
+            <p class="mt-3"><span class="underline font-bold">Votre message:</span> {{$message}}</p>
+        </div>
+    </div>
     </body>
 </html>
-

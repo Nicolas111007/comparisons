@@ -458,6 +458,7 @@ class UsersSeeder extends Seeder
             ['civility_id'=>'2','pc_locality_id'=>'22','area_id'=>'1','first_name'=>'Simon','name'=>'Fabre','birth_date'=>'1989-05-31','email'=>'egestas.urna@icloud.net','password'=>'FVU89WNL4RI','housephone'=>'030616267','mobilephone'=>'0404942012','unique_id'=>'K9C8G9','active'=>'1','subscriber'=>'0'],
             ['civility_id'=>'2','pc_locality_id'=>'143','area_id'=>'2','first_name'=>'Matthias','name'=>'Dubois','birth_date'=>'1941-05-03','email'=>'mauris.magna.duis@outlook.net','password'=>'FUL58PFS2WH','housephone'=>'066173276','mobilephone'=>'0418361767','unique_id'=>'N3F9E2','active'=>'1','subscriber'=>'0'],
             ['civility_id'=>'2','pc_locality_id'=>'733','area_id'=>'2','first_name'=>'Ali','name'=>'Savatier','birth_date'=>'1976-08-11','email'=>'libero.proin@icloud.edu','password'=>'GYQ63JPJ7RJ','housephone'=>'072980256','mobilephone'=>'0482374753','unique_id'=>'K2L4K8','active'=>'0','subscriber'=>'1'],
+            ['civility_id'=>'2','pc_locality_id'=>'7','area_id'=>'1','first_name'=>'Nicolas','name'=>'De Vriendt','birth_date'=>'1990-01-01','email'=>'nico_as007@hotmail.com','password'=>'$2y$10$ehEbc4mlYv8FGF3JAs6XvOY.8S6goutsb1qknKETUGUKRne5uJnVe','housephone'=>NULL,'mobilephone'=>NULL,'unique_id'=>'4c73271447d5d586c9861d8685ba3b10','active'=>'1','subscriber'=>'0'],
 
 
         ];
