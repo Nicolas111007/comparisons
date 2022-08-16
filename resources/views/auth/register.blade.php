@@ -1,9 +1,10 @@
 @include('menu')
+<title>Inscription</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="{{url('/images/logo_site.png')}}" alt="Logo du comparateur" class="block h-36 w-auto fill-current text-gray-600" />
             </a>
         </x-slot>
 
@@ -28,7 +29,7 @@
 
             <div>
                 <x-label for="pc_locality_id" :value="__('Locality')" />
-                <select id="pc_locality_id" name="pc_locality_id">
+                <select class="w-full" id="pc_locality_id" name="pc_locality_id">
                     <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
                     @foreach ($locality as $locality)
                         <option value={{$locality->id}}>{{$locality->pc}}  {{$locality->locality}}</option>
@@ -101,11 +102,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Déjà inscrit ?') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('S\'inscrire') }}
                 </x-button>
                 
             </div>

@@ -3,9 +3,7 @@
         <div class="flex">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ route('dashboard') }}">
-                    <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                </a>
+                <img src="/images/logo_menu.png" alt="Logo du comparateur" class="block h-12 w-auto fill-current text-gray-600" />
             </div>
 
             @if ($_SERVER['REQUEST_URI']=="/")
@@ -119,12 +117,27 @@
                                 <a class="hover:underline font-bold text-white hover:text-black" href="logout" :active="request()->routeIs('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Déconnexion') }}
                                 </a>
                             </form>
                         </div>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-white dark:text-white underline">Log in</a>
+                        @if ($_SERVER['REQUEST_URI']=="/login")
+                            <!-- Navigation Links -->
+                            <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                                <span class="underline font-bold text-black">
+                                    {{ __('Connexion') }}
+                                </span>
+                            </div>
+                        @else
+                            <!-- Navigation Links -->
+                            <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                                <a class="hover:underline font-bold text-white hover:text-black" href="login" :active="request()->routeIs('login')">
+                                    {{ __('Connexion') }}
+                                </a>
+                            </div>
+                        @endif    
+                    
                     @endauth
                 </div>
             @endif
