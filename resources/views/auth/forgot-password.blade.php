@@ -1,13 +1,14 @@
+@include('menu')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="{{url('/images/logo_site.png')}}" alt="Logo du comparateur" class="block h-36 w-auto fill-current text-gray-600" />
             </a>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('Mot de passe oublié ? Aucun soucis, inscrivez votre e-mail et nous vous renverrons un lien pour réinitialiser votre mot de passe et vous permettre d\'en choisir un nouveau.') }}
         </div>
 
         <!-- Session Status -->
@@ -21,14 +22,14 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('E-mail')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Email Password Reset Link') }}
+                    {{ __('Réinitialiser le mot de passe') }}
                 </x-button>
             </div>
         </form>
