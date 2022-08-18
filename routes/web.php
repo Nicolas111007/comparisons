@@ -7,6 +7,9 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactResultController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SupplierModController;
+use App\Http\Controllers\ContractModController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +50,25 @@ Route::put('/contactresult', [ContactResultController::class, 'store'])
 
 Route::get('/contactresult', [ContactResultController::class, 'index'])
     ->name('contactresult.index');
+
+Route::get('/admin', [AdminController::class, 'index'])
+    ->name('admin');
+
+Route::resource('suppliermod', SupplierModController::class);
+
+Route::get('/suppliermod', [SupplierModController::class, 'index'])
+    ->name('suppliermod');
+
+Route::get('/suppliermod/create', [SupplierModController::class, 'create'])
+    ->name('suppliermod.create');
+
+Route::resource('contractmod', ContractModController::class);
+
+Route::get('/contractmod', [ContractModController::class, 'index'])
+    ->name('contractmod');
+
+Route::get('/contractmod/create', [ContractModController::class, 'create'])
+    ->name('contractmod.create');
+
 
 require __DIR__.'/auth.php';

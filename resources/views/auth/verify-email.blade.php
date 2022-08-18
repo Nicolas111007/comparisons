@@ -1,4 +1,5 @@
 <x-guest-layout>
+<title>Vérification d\'e-mail</title>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">

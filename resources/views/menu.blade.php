@@ -32,7 +32,7 @@
             @else
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
-                    <a class="hover:underline font-bold text-white hover:text-black" href="compare" :active="request()->routeIs('compare')">
+                    <a class="hover:underline font-bold text-white hover:text-black" href="{{route('compare')}}" :active="request()->routeIs('compare')">
                         {{ __('Comparateur') }}
                     </a>
                 </div>
@@ -49,7 +49,7 @@
             @else
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
-                    <a class="hover:underline font-bold text-white hover:text-black" href="faq" :active="request()->routeIs('faq')">
+                    <a class="hover:underline font-bold text-white hover:text-black" href="{{route('faq')}}" :active="request()->routeIs('faq')">
                         {{ __('FAQ') }}
                     </a>
                 </div>
@@ -65,7 +65,7 @@
             @else
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
-                    <a class="hover:underline font-bold text-white hover:text-black" href="contact" :active="request()->routeIs('contact')">
+                    <a class="hover:underline font-bold text-white hover:text-black" href="{{route('contact')}}" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                 @else
                     <!-- Navigation Links -->
                     <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
-                        <a class="hover:underline font-bold text-white hover:text-black" href="dashboard" :active="request()->routeIs('dashboard')">
+                        <a class="hover:underline font-bold text-white hover:text-black" href="{{route('dashboard')}}" :active="request()->routeIs('dashboard')">
                             {{ __('Mon compte') }}
                         </a>
                     </div>
@@ -98,12 +98,32 @@
                 @else
                     <!-- Navigation Links -->
                     <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
-                        <a class="hover:underline font-bold text-white hover:text-black" href="register" :active="request()->routeIs('register')">
+                        <a class="hover:underline font-bold text-white hover:text-black" href="{{route('register')}}" :active="request()->routeIs('register')">
                             {{ __('Inscription') }}
                         </a>
                     </div>
                 @endif
             @endif
+
+            @Auth
+                @if (Auth::user()->is_admin==1)
+                    @if ($_SERVER['REQUEST_URI']=="/admin")
+                        <!-- Navigation Links -->
+                        <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                            <span class="underline font-bold text-black">
+                                {{ __('Panneau d\'administration') }}
+                            </span>
+                        </div>
+                    @else
+                        <!-- Navigation Links -->
+                        <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
+                            <a class="hover:underline font-bold text-white hover:text-black" href="{{route('admin')}}" :active="request()->routeIs('admin')">
+                                {{ __('Panneau d\'administration') }}
+                            </a>
+                        </div>
+                    @endif
+                @endif
+            @endauth
 
             @if (Route::has('login'))
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block">
@@ -114,7 +134,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <a class="hover:underline font-bold text-white hover:text-black" href="logout" :active="request()->routeIs('logout')"
+                                <a class="hover:underline font-bold text-white hover:text-black" href="{{route('logout')}}" :active="request()->routeIs('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                                     {{ __('Déconnexion') }}

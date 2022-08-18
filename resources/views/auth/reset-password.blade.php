@@ -1,4 +1,5 @@
 @include('menu')
+<title>Réinitialisation du mot de passe</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
