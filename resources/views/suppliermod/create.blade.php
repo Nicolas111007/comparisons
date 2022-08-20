@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Accueil</title>
+        <title>Ajout de fournisseur</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,33 +26,30 @@
 
         <div class="flex items-center justify-center my-20">
             <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>CREATE</h2></div>
-                <form method="post" action="{{route('suppliermod.update', $supplierstomod->id)}}">
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Données du fournisseur à ajouter</p></div>
+                <form method="post" action="{{route('suppliermod.store')}}">
                     @csrf
-                    @method('PUT')
                     <table class="m-auto mb-10">
                         <tr>
-                            <th class="px-3 text-white" colspan=3>Fournisseur à modifier</th>
+                            <th class="px-3 text-white" colspan=3>Données du fournisseur</th>
                         </tr>
                         <tr>
-                            <th class="px-3 text-white">ID</th>
                             <th class="px-3 text-white"><label for="supplier_name">Nom du fournisseur</label></th>
-                            <th class="px-3 text-white">En activité</th>
+                            <th class="px-3 text-white"><label for="active_supplier">En activité</label></th>
                         </tr>
                         <tr>
-                            <td class="font-bold px-3">{{$supplierstomod->id}}</td>
                             <td class="font-bold px-3">
                                 @if (null !== "old('supplier_name')")
-                                    <x-input id="supplier_name" class="block mt-1 w-full" type="text" name="supplier_name" :value="$supplierstomod->supplier_name" />
+                                    <input id="supplier_name" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="supplier_name" value="" autofocus />
                                 @else
-                                    <x-input id="supplier_name" class="block mt-1 w-full" type="text" name="supplier_name" :value="old('supplier_name')" />
+                                    <input id="supplier_name" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="supplier_name" value="old('supplier_name')" autofocus />
                                 @endif
                             </td>
                             <td class="font-bold text-center px-3">
                                 @if (null !== "old('active_supplier')")
-                                    <x-input id="active_supplier" class="block mt-1 w-full text-center" type="text" name="active_supplier" :value="$supplierstomod->active_supplier" />
+                                    <input id="active_supplier" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="active_supplier" value="1" />
                                 @else
-                                    <x-input id="active_supplier" class="block mt-1 w-full text-center" type="text" name="active_supplier" :value="old('active_supplier')" />
+                                    <input id="active_supplier" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="active_supplier" value="old('active_supplier')" />
                                 @endif
                             </td>
                         </tr>
@@ -62,37 +59,65 @@
                         <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
                     </div>
                 </form>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Liste des fournisseurs</p></div>
+                <div class="mb-5"><p>Pour pouvoir supprimer un fournisseur, celui-ci ne doit plus avoir de contrats liés et doit être d'abord inactivé.</p></div>
                 <table class="m-auto">
                     <tr>
                         <th class="px-3 text-white">ID</th>
                         <th class="px-3 text-white">Nom du fournisseur</th>
                         <th class="px-3 text-white">En activité</th>
-                        <th class="px-3"></th>
-                        <th class="px-3"></th>
+                        <th class="px-3 text-white">Contrats liés</th>
+                        <th class="px-3 text-white">Modification</th>
+                        <th class="px-3 text-white">Suppression</th>
                     </tr>
                     @foreach ($suppliers as $suppliers)
-                        <tr>
-                        @if ($suppliers['active_supplier']==1)
-                            <td class="px-3">{{$suppliers['id']}}</td>
-                            <td class="px-3">{{$suppliers['supplier_name']}}</td>
-                            <td class="font-bold text-center px-3">OUI</td>
-                        @else
-                            <td class="font-bold text-red-800 px-3">{{$suppliers['id']}}</td>
-                            <td class="font-bold text-red-800 px-3">{{$suppliers['supplier_name']}}</td>
-                            <td class="font-bold text-red-800 text-center px-3">NON</td>
+                        @if ($suppliers['deleted']==0)
+                            <tr>
+                            @if ($suppliers['active_supplier']==1)
+                                <td class="px-3">{{$suppliers['id']}}</td>
+                                <td class="px-3">{{$suppliers['supplier_name']}}</td>
+                                <td class="font-bold text-center px-3">OUI</td>
+                                @php
+                                    $i=0
+                                @endphp
+                                @foreach ($contracts as $contracts2)
+                                    @if ($contracts2['suppliers_id']==$suppliers['id'] && $contracts2['deleted']==0)
+                                        @php
+                                            $i++
+                                        @endphp
+                                    @endif
+                                @endforeach
+                                <td class="font-bold text-center px-3">{{$i}}</td>
+                            @else
+                                <td class="font-bold text-red-800 px-3">{{$suppliers['id']}}</td>
+                                <td class="font-bold text-red-800 px-3">{{$suppliers['supplier_name']}}</td>
+                                <td class="font-bold text-red-800 text-center px-3">NON</td>
+                                @php
+                                    $i=0
+                                @endphp
+                                @foreach ($contracts as $contracts2)
+                                    @if ($contracts2['suppliers_id']==$suppliers['id'] && $contracts2['deleted']==0)
+                                        @php
+                                            $i++
+                                        @endphp
+                                    @endif
+                                @endforeach
+                                <td class="font-bold text-red-800 text-center px-3">{{$i}}</td>
+                            @endif
+                                <td class="px-3"><a href="{{route('suppliermod.edit', $suppliers->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3">
+                                    <form action="{{route('suppliermod.destroy', $suppliers->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    @if ($suppliers['active_supplier']==0 && $i==0)
+                                        <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                    @endif
+                                    
+                                    </form>
+                                </td>
+                            </tr>
                         @endif
-                            <td class="px-3"><a href="{{route('suppliermod.edit', $suppliers->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
-                            <td class="px-3">
-                                <form action="{{route('suppliermod.destroy', $suppliers->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                @if ($suppliers['active_supplier']==0)
-                                    <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
-                                @endif
-                                
-                                </form>
-                            </td>
-                        </tr>
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">

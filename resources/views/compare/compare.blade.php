@@ -35,7 +35,7 @@
                     <div><p><span class="text-red-700 font-bold">*</span> Les champs marqués d'un astérisque sont obligatoires</p></div>
                     <h2 class="text-center underline font-bold text-sky-400">Données personnelles</h2>
                     <!-- Area -->
-
+                    
                     <div class="text-center">
                         <div><label for="area">Région <span class="text-red-700 font-bold">*</span></label></div>
                         <select id="area" name="area" required autofocus>

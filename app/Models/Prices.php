@@ -14,7 +14,7 @@ class Prices extends Model
      *
      * @var array
      */
-    protected $fillable = ['contracts_id', 'area_id', 'energy_type_id', 'suppliers_id', 'var_fix', 'subscription', 'mono', 'bi_day', 'bi_night', 'excl_night', 'g_and_c_energy', 'date_prive_val'];
+    protected $fillable = ['contract_id', 'area_id', 'energy_type_id', 'suppliers_id', 'var_fix', 'subscription', 'mono', 'bi_day', 'bi_night', 'excl_night', 'g_and_c_energy', 'date_price_val', 'deleted'];
 
    /**
      * The table associated with the model.

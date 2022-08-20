@@ -14,7 +14,7 @@ class Suppliers extends Model
      *
      * @var array
      */
-    protected $fillable = ['supplier_name'];
+    protected $fillable = ['supplier_name', 'active_supplier', 'deleted'];
 
    /**
      * The table associated with the model.

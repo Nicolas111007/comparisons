@@ -35,6 +35,7 @@ class SuppliersSeeder extends Seeder
             ['supplier_name'=>'Watz','active_supplier'=>'0'],
             ['supplier_name'=>'Bolt','active_supplier'=>'1'],
             ['supplier_name'=>'Energie.be','active_supplier'=>'1'],
+            ['supplier_name'=>'Suppabletodel','active_supplier'=>'0'],
         ];
             
         //Insert data in the table

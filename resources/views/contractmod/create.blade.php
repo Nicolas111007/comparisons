@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Accueil</title>
+        <title>Ajout de contrat</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,34 +25,72 @@
         @include('menu')
 
         <div class="flex items-center justify-center my-20">
-            <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>TEST 2</h2></div>
-                <form method="post" action="{{route('suppliermod.update', $supplierstomod->id)}}">
+            <div class="bg-sky-400 p-5 rounded-lg w-fit">
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>Données du contrat à ajouter</h2></div>
+                <form method="post" action="{{route('contractmod.store')}}">
                     @csrf
-                    @method('PUT')
+                    
                     <table class="m-auto mb-10">
                         <tr>
-                            <th class="px-3 text-white" colspan=3>Fournisseur à modifier</th>
+                            <th class="px-3 text-white" colspan=8>Données du contrat</th>
                         </tr>
                         <tr>
-                            <th class="px-3 text-white">ID</th>
-                            <th class="px-3 text-white"><label for="supplier_name">Nom du fournisseur</label></th>
-                            <th class="px-3 text-white">En activité</th>
+                            <th class="px-3 text-white"><label for="suppliers_id">ID du Fournisseur</label></th>
+                            <th class="px-3 text-white"><label for="energy_type_id">ID type d'énergie</label></th>
+                            <th class="px-3 text-white"><label for="contract_name">Nom du contrat</label></th>
+                            <th class="px-3 text-white"><label for="var_fix">Variable/Fixe</label></th>
+                            <th class="px-3 text-white"><label for="time_contract">Indexation</label></th>
+                            <th class="px-3 text-white"><label for="abbreviation">Abbréviation</label></th>
+                            <th class="px-3 text-white"><label for="active_contract">Actif</label></th>
                         </tr>
                         <tr>
-                            <td class="font-bold px-3">{{$supplierstomod->id}}</td>
                             <td class="font-bold px-3">
-                                @if (null !== "old('supplier_name')")
-                                    <x-input id="supplier_name" class="block mt-1 w-full" type="text" name="supplier_name" :value="$supplierstomod->supplier_name" />
+                                @if (null !== "old('suppliers_id')")
+                                    <input id="suppliers_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="suppliers_id" value="" autofocus />
                                 @else
-                                    <x-input id="supplier_name" class="block mt-1 w-full" type="text" name="supplier_name" :value="old('supplier_name')" />
+                                    <input id="suppliers_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="suppliers_id" value="old('suppliers_id')" autofocus />
                                 @endif
                             </td>
                             <td class="font-bold text-center px-3">
-                                @if (null !== "old('active_supplier')")
-                                    <x-input id="active_supplier" class="block mt-1 w-full text-center" type="text" name="active_supplier" :value="$supplierstomod->active_supplier" />
+                                @if (null !== "old('energy_type_id')")
+                                    <input id="energy_type_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="energy_type_id" value="" />
                                 @else
-                                    <x-input id="active_supplier" class="block mt-1 w-full text-center" type="text" name="active_supplier" :value="old('active_supplier')" />
+                                    <input id="energy_type_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="energy_type_id" value="old('energy_type_id')" />
+                                @endif
+                            </td>
+                            <td class="font-bold text-center px-3">
+                                @if (null !== "old('contract_name')")
+                                    <input id="contract_name" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="contract_name" value="" />
+                                @else
+                                    <input id="contract_name" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="contract_name" value="old('contract_name')" />
+                                @endif
+                            </td>
+                            <td class="font-bold text-center px-3">
+                                @if (null !== "old('var_fix')")
+                                    <input id="var_fix" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="var_fix" value="" />
+                                @else
+                                    <input id="var_fix" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="var_fix" value="old('var_fix')" />
+                                @endif
+                            </td>
+                            <td class="font-bold text-center px-3">
+                                @if (null !== "old('time_contract')")
+                                    <input id="time_contract" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="time_contract" value="" />
+                                @else
+                                    <input id="time_contract" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="time_contract" value="old('time_contract')" />
+                                @endif
+                            </td>
+                            <td class="font-bold text-center px-3">
+                                @if (null !== "old('abbreviation')")
+                                    <input id="abbreviation" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="abbreviation" value="" />
+                                @else
+                                    <input id="abbreviation" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="text" name="abbreviation" value="old('abbreviation')" />
+                                @endif
+                            </td>
+                            <td class="font-bold text-center px-3">
+                                @if (null !== "old('active_contract')")
+                                    <input id="active_contract" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="active_contract" value="1" />
+                                @else
+                                    <input id="active_contract" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full text-center" type="text" name="active_contract" value="old('active_contract')" />
                                 @endif
                             </td>
                         </tr>
@@ -62,41 +100,107 @@
                         <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
                     </div>
                 </form>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>Liste des contrats</h2></div>
                 <table class="m-auto">
                     <tr>
                         <th class="px-3 text-white">ID</th>
-                        <th class="px-3 text-white">Nom du fournisseur</th>
-                        <th class="px-3 text-white">En activité</th>
-                        <th class="px-3"></th>
-                        <th class="px-3"></th>
+                        <th class="px-3 text-white">Fournisseur</th>
+                        <th class="px-3 text-white">Type d'énergie</th>
+                        <th class="px-3 text-white">Nom du contrat</th>
+                        <th class="px-3 text-white">Variable/Fixe</th>
+                        <th class="px-3 text-white">Indexation</th>
+                        <th class="px-3 text-white">Abbréviation</th>
+                        <th class="px-3 text-white">Actif</th>
+                        <th class="px-3 text-white">Prix liés</th>
+                        <th class="px-3 text-white">Modification</th>
+                        <th class="px-3 text-white">Suppression</th>
                     </tr>
-                    @foreach ($suppliers as $suppliers)
-                        <tr>
-                        @if ($suppliers['active_supplier']==1)
-                            <td class="px-3">{{$suppliers['id']}}</td>
-                            <td class="px-3">{{$suppliers['supplier_name']}}</td>
-                            <td class="font-bold text-center px-3">OUI</td>
-                        @else
-                            <td class="font-bold text-red-800 px-3">{{$suppliers['id']}}</td>
-                            <td class="font-bold text-red-800 px-3">{{$suppliers['supplier_name']}}</td>
-                            <td class="font-bold text-red-800 text-center px-3">NON</td>
-                        @endif
-                            <td class="px-3"><a href="{{route('suppliermod.edit', $suppliers->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
-                            <td class="px-3">
-                                <form action="{{route('suppliermod.destroy', $suppliers->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                @if ($suppliers['active_supplier']==0)
-                                    <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                    @foreach ($contracts as $contracts)
+                        @if ($contracts['deleted']==0)
+                            <tr>
+                                @if ($contracts['active_contract']==1)
+                                    <td class="px-3">{{$contracts['id']}}</td>
+                                    @foreach ($suppliers as $suppliers2)
+                                        @if ($suppliers2['id']==$contracts['suppliers_id'])
+                                            <td class="px-3">{{$suppliers2['supplier_name']}}</td>
+                                        @endif
+                                    @endforeach
+                                    @if ($contracts['energy_type_id']==1)
+                                        <td class="px-3 bg-yellow-400">Électricité</td>
+                                    @else
+                                        <td class="px-3">Gaz</td>
+                                    @endif
+                                    <td class="px-3">{{$contracts['contract_name']}}</td>
+                                    @if ($contracts['var_fix']==0)
+                                        <td class="px-3">Variable</td>
+                                    @else
+                                        <td class="px-3">Fixe</td>
+                                    @endif
+                                    <td class="px-3">{{$contracts['time_contract']}}</td>
+                                    <td class="px-3">{{$contracts['abbreviation']}}</td>
+                                    <td class="font-bold text-center px-3">OUI</td>
+                                    @php
+                                        $i=0
+                                    @endphp
+                                    @foreach ($prices as $prices2)
+                                        @if ($prices2['contract_id']==$contracts['id'] && $prices2['deleted']==0)
+                                            @php
+                                                $i++
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    <td class="font-bold text-center px-3">{{$i}}</td>
+                                @else
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['id']}}</td>
+                                    @foreach ($suppliers as $suppliers2)
+                                        @if ($suppliers2['id']==$contracts['suppliers_id'])
+                                            <td class="font-bold text-red-800 px-3">{{$suppliers2['supplier_name']}}</td>
+                                        @endif
+                                    @endforeach
+                                    @if ($contracts['energy_type_id']==1)
+                                        <td class="font-bold text-red-800 px-3 bg-yellow-400">Électricité</td>
+                                    @else
+                                        <td class="font-bold text-red-800 px-3">Gaz</td>
+                                    @endif
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['contract_name']}}</td>
+                                    @if ($contracts['var_fix']==0)
+                                        <td class="font-bold text-red-800 px-3">Variable</td>
+                                    @else
+                                        <td class="font-bold text-red-800 px-3">Fixe</td>
+                                    @endif
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['time_contract']}}</td>
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['abbreviation']}}</td>
+                                    <td class="font-bold text-red-800 text-center px-3">NON</td>
+                                    @php
+                                        $i=0
+                                    @endphp
+                                    @foreach ($prices as $prices2)
+                                        @if ($prices2['contract_id']==$contracts['id'] && $prices2['deleted']==0)
+                                            @php
+                                                $i++
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    <td class="font-bold text-red-800 text-center px-3">{{$i}}</td>
                                 @endif
-                                
-                                </form>
-                            </td>
-                        </tr>
+                                <td class="px-3"><a href="{{route('contractmod.edit', $contracts->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3">
+                                    <form action="{{route('contractmod.destroy', $contracts->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    @if ($contracts['active_contract']==0 && $i==0)
+                                        <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                    @endif
+                                    
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">
-                    <a href="{{route('suppliermod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un fournisseur</a>
+                    <a href="{{route('contractmod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un contrat</a>
                 </div>
             </div>
         </div>

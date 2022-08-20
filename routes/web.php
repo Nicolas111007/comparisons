@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactResultController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SupplierModController;
 use App\Http\Controllers\ContractModController;
+use App\Http\Controllers\PriceModController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,14 @@ Route::get('/contractmod', [ContractModController::class, 'index'])
 
 Route::get('/contractmod/create', [ContractModController::class, 'create'])
     ->name('contractmod.create');
+
+Route::resource('pricemod', PriceModController::class);
+
+Route::get('/pricemod', [PriceModController::class, 'index'])
+    ->name('pricemod');
+
+Route::get('/pricemod/create', [PriceModController::class, 'create'])
+    ->name('pricemod.create');
 
 
 require __DIR__.'/auth.php';

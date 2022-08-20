@@ -22,6 +22,7 @@ class CreateContractsTable extends Migration
             $table->tinyInteger('time_contract');
             $table->string('abbreviation')->length(15);
             $table->boolean('active_contract');
+            $table->boolean('deleted')->default(0);
 
             $table->foreign('suppliers_id')->references('id')->on('suppliers')
                     ->onDelete('restrict')->onUpdate('cascade');

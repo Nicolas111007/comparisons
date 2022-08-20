@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Accueil</title>
+        <title>Modification / Ajout / Suppression de contrat</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
         <div class="flex items-center justify-center my-20">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
                 <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Modification d'un contrat</p></div>
-                <div class="mb-5"><p>Vous ne pouvez supprimer que les contrats n'ayant plus de fiche de prix reliée</p></div>
+                <div class="mb-5"><p>Pour pouvoir supprimer un contrat, celui-ci ne doit plus avoir de fiche de prix liés et doit être d'abord inactivé.</p></div>
                 <div class="mb-5"><p>Pour ajouter un contrat, veuillez vous rendre en bas du présent formulaire</p></div>
                 <table class="m-auto">
                     <tr>
@@ -40,92 +40,95 @@
                         <th class="px-3 text-white">Abbréviation</th>
                         <th class="px-3 text-white">Actif</th>
                         <th class="px-3 text-white">Prix liés</th>
-                        <th class="px-3"></th>
-                        <th class="px-3"></th>
+                        <th class="px-3 text-white">Modification</th>
+                        <th class="px-3 text-white">Suppression</th>
                     </tr>
                     @foreach ($contracts as $contracts)
-                        <tr>
-                            @if ($contracts['active_contract']==1)
-                                <td class="px-3">{{$contracts['id']}}</td>
-                                @foreach ($suppliers as $suppliers2)
-                                    @if ($suppliers2['id']==$contracts['suppliers_id'])
-                                        <td class="px-3">{{$suppliers2['supplier_name']}}</td>
+                        @if ($contracts['deleted']==0)
+                            <tr>
+                                @if ($contracts['active_contract']==1)
+                                    <td class="px-3">{{$contracts['id']}}</td>
+                                    @foreach ($suppliers as $suppliers2)
+                                        @if ($suppliers2['id']==$contracts['suppliers_id'])
+                                            <td class="px-3">{{$suppliers2['supplier_name']}}</td>
+                                        @endif
+                                    @endforeach
+                                    @if ($contracts['energy_type_id']==1)
+                                        <td class="px-3 bg-yellow-400">Électricité</td>
+                                    @else
+                                        <td class="px-3">Gaz</td>
                                     @endif
-                                @endforeach
-                                @if ($contracts['energy_type_id']==1)
-                                    <td class="px-3 bg-yellow-400">Électricité</td>
-                                @else
-                                    <td class="px-3">Gaz</td>
-                                @endif
-                                <td class="px-3">{{$contracts['contract_name']}}</td>
-                                @if ($contracts['var_fix']==0)
-                                    <td class="px-3">Variable</td>
-                                @else
-                                    <td class="px-3">Fixe</td>
-                                @endif
-                                <td class="px-3">{{$contracts['time_contract']}}</td>
-                                <td class="px-3">{{$contracts['abbreviation']}}</td>
-                                <td class="font-bold text-center px-3">OUI</td>
-                                @php
-                                    $i=0
-                                @endphp
-                                @foreach ($prices as $prices2)
-                                    @if ($prices2['contract_id']==$contracts['id'])
-                                        @php
-                                            $i++
-                                        @endphp
+                                    <td class="px-3">{{$contracts['contract_name']}}</td>
+                                    @if ($contracts['var_fix']==0)
+                                        <td class="px-3">Variable</td>
+                                    @else
+                                        <td class="px-3">Fixe</td>
                                     @endif
-                                @endforeach
-                                <td class="font-bold text-center px-3">{{$i}}</td>
-                            @else
-                                <td class="font-bold text-red-800 px-3">{{$contracts['id']}}</td>
-                                @foreach ($suppliers as $suppliers2)
-                                    @if ($suppliers2['id']==$contracts['suppliers_id'])
-                                        <td class="font-bold text-red-800 px-3">{{$suppliers2['supplier_name']}}</td>
-                                    @endif
-                                @endforeach
-                                @if ($contracts['energy_type_id']==1)
-                                    <td class="font-bold text-red-800 px-3 bg-yellow-400">Électricité</td>
+                                    <td class="px-3">{{$contracts['time_contract']}}</td>
+                                    <td class="px-3">{{$contracts['abbreviation']}}</td>
+                                    <td class="font-bold text-center px-3">OUI</td>
+                                    @php
+                                        $i=0
+                                    @endphp
+                                    @foreach ($prices as $prices2)
+                                        @if ($prices2['contract_id']==$contracts['id'] && $prices2['deleted']==0)
+                                            @php
+                                                $i++
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    <td class="font-bold text-center px-3">{{$i}}</td>
                                 @else
-                                    <td class="font-bold text-red-800 px-3">Gaz</td>
-                                @endif
-                                <td class="font-bold text-red-800 px-3">{{$contracts['contract_name']}}</td>
-                                @if ($contracts['var_fix']==0)
-                                    <td class="font-bold text-red-800 px-3">Variable</td>
-                                @else
-                                    <td class="font-bold text-red-800 px-3">Fixe</td>
-                                @endif
-                                <td class="font-bold text-red-800 px-3">{{$contracts['time_contract']}}</td>
-                                <td class="font-bold text-red-800 px-3">{{$contracts['abbreviation']}}</td>
-                                <td class="font-bold text-red-800 text-center px-3">NON</td>
-                                @php
-                                    $i=0
-                                @endphp
-                                @foreach ($prices as $prices2)
-                                    @if ($prices2['contract_id']==$contracts['id'])
-                                        @php
-                                            $i++
-                                        @endphp
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['id']}}</td>
+                                    @foreach ($suppliers as $suppliers2)
+                                        @if ($suppliers2['id']==$contracts['suppliers_id'])
+                                            <td class="font-bold text-red-800 px-3">{{$suppliers2['supplier_name']}}</td>
+                                        @endif
+                                    @endforeach
+                                    @if ($contracts['energy_type_id']==1)
+                                        <td class="font-bold text-red-800 px-3 bg-yellow-400">Électricité</td>
+                                    @else
+                                        <td class="font-bold text-red-800 px-3">Gaz</td>
                                     @endif
-                                @endforeach
-                                <td class="font-bold text-center px-3">{{$i}}</td>
-                            @endif
-                            <td class="px-3"><a href="{{route('contractmod.edit', $contracts->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
-                            <td class="px-3">
-                                <form action="{{route('contractmod.destroy', $contracts->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                @if ($i==0)
-                                    <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['contract_name']}}</td>
+                                    @if ($contracts['var_fix']==0)
+                                        <td class="font-bold text-red-800 px-3">Variable</td>
+                                    @else
+                                        <td class="font-bold text-red-800 px-3">Fixe</td>
+                                    @endif
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['time_contract']}}</td>
+                                    <td class="font-bold text-red-800 px-3">{{$contracts['abbreviation']}}</td>
+                                    <td class="font-bold text-red-800 text-center px-3">NON</td>
+                                    @php
+                                        $i=0
+                                    @endphp
+                                    @foreach ($prices as $prices2)
+                                        @if ($prices2['contract_id']==$contracts['id'] && $prices2['deleted']==0)
+                                            @php
+                                                $i++
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    <td class="font-bold text-red-800 text-center px-3">{{$i}}</td>
                                 @endif
-                                
-                                </form>
-                            </td>
-                        </tr>
+                                <td class="px-3"><a href="{{route('contractmod.edit', $contracts->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3">
+                                    <form action="{{route('contractmod.destroy', $contracts->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    @if ($contracts['active_contract']==0 && $i==0)
+                                        <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                    @endif
+                                    
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">
-                    <a href="{{route('suppliermod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un contrat</a>
+                    <a href="{{route('contractmod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un contrat</a>
                 </div>
             </div>
         </div>

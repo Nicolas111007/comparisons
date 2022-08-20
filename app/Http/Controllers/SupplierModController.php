@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use App\Models\Suppliers;
+use App\Models\Contracts;
 
 class SupplierModController extends Controller
 {
@@ -19,9 +20,11 @@ class SupplierModController extends Controller
         if (Auth::user()) {
             if (Auth::user()->is_admin==1) {
                 $suppliers=Suppliers::all();
+                $contracts=Contracts::all();
                 
                 return view('suppliermod.index', [
                     'suppliers'=>$suppliers,
+                    'contracts'=>$contracts,
                 ]);
             } else {
                 return redirect(RouteServiceProvider::HOME);
@@ -41,9 +44,11 @@ class SupplierModController extends Controller
         if (Auth::user()) {
             if (Auth::user()->is_admin==1) {
                 $suppliers=Suppliers::all();
+                $contracts=Contracts::all();
                 
                 return view('suppliermod.create', [
                     'suppliers'=>$suppliers,
+                    'contracts'=>$contracts,
                 ]);
             } else {
                 return redirect(RouteServiceProvider::HOME);
@@ -61,19 +66,32 @@ class SupplierModController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'supplier_name' => 'required', 
-            'active_supplier' => 'required',
-        ]);
+        if (Auth::user()) {
+            if (Auth::user()->is_admin==1) {
+                $validatedData = $request->validate([
+                    'supplier_name' => 'required',
+                    'active_supplier' => 'required',
+                ]);
+                
+                $i=0;
+                foreach ($validatedData as $validatedData2) {
+                    $validateddata[$i]=$validatedData2;
+                    $i++;
+                }
+                
+                if ($validateddata[1]==0 || $validateddata[1]==1) {
+                    Suppliers::create($validatedData);
+                } else {
+                    return redirect('/suppliermod');
+                }
 
-        //Le formulaire a été validé
-        $suppliers = new Suppliers();
-
-        $suppliers->supplier_name = $validated['supplier_name'];
-        $suppliers->active_supplier = $validated['active_supplier'];
-
-        $suppliers->save();
-
+                return redirect('/suppliermod');
+            } else {
+                return redirect(RouteServiceProvider::HOME);
+            }
+        } else {
+            return redirect(RouteServiceProvider::LOGIN);
+        }                
     }
 
     /**
@@ -97,12 +115,19 @@ class SupplierModController extends Controller
     {
         if (Auth::user()) {
             if (Auth::user()->is_admin==1) {
-                $suppliers=Suppliers::all();
-                $supplierstomod=Suppliers::findOrFail($id);
                 
-                return view('suppliermod.edit', compact('supplierstomod'), [
-                    'suppliers'=>$suppliers,
-                ]);
+                $suppliertomod=Suppliers::find($id);
+                
+                if ($suppliertomod) {
+                    $suppliers=Suppliers::all();
+                    $contracts=Contracts::all();
+                    return view('suppliermod.edit', compact('suppliertomod'), [
+                        'suppliers'=>$suppliers,
+                        'contracts'=>$contracts,
+                    ]);
+                } else {
+                    return redirect('/suppliermod');
+                }
             } else {
                 return redirect(RouteServiceProvider::HOME);
             }
@@ -120,19 +145,35 @@ class SupplierModController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Validation des données du formulaire
-        $validated = $request->validate([
-            'supplier_name' => 'required', 
-            'active_supplier' => 'required', 
-        ]);
+        if (Auth::user()) {
+            if (Auth::user()->is_admin==1) {
+                $validated = $request->validate([
+                    'supplier_name' => 'required',
+                    'active_supplier' => 'required',
+                ]);
 
-        //Le formulaire a été validé, nous récupérons le fournisseur à modifier
-        $supplierstomod = Suppliers::findOrFail($id);
-        
-	    //Mise à jour des données modifiées et sauvegarde dans la base de données
-        $supplierstomod->update($validated);
-
-        return redirect('/suppliermod');
+                $suppliertomod = Suppliers::findOrFail($id);
+                
+                $i=0;
+                foreach ($validated as $validated2) {
+                    $validateddata[$i]=$validated2;
+                    echo '<p>$validateddata[' . $i . ']: ' . $validateddata[$i] . '</p>';
+                    $i++;
+                }
+                
+                if ($validateddata[1]==0 || $validateddata[1]==1) {
+                    $suppliertomod->update($validated);
+                } else {
+                    return redirect('/suppliermod');
+                }
+                
+                return redirect('/suppliermod');
+            } else {
+                return redirect(RouteServiceProvider::HOME);
+            }
+        } else {
+            return redirect(RouteServiceProvider::LOGIN);
+        }
     }
 
     /**
@@ -141,8 +182,23 @@ class SupplierModController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if (Auth::user()) {
+            if (Auth::user()->is_admin==1) {
+                $validated = $request->validate([
+                    'deleted' => 'required',
+                ]);
+                
+                $suppliertodel = Suppliers::findOrFail($id);
+                $suppliertodel->update($validated);
+            
+                return redirect('/suppliermod');
+            } else {
+                return redirect(RouteServiceProvider::HOME);
+            }
+        } else {
+            return redirect(RouteServiceProvider::LOGIN);
+        }
     }
 }
