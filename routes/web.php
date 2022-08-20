@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SupplierModController;
 use App\Http\Controllers\ContractModController;
 use App\Http\Controllers\PriceModController;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,5 +80,13 @@ Route::get('/pricemod', [PriceModController::class, 'index'])
 Route::get('/pricemod/create', [PriceModController::class, 'create'])
     ->name('pricemod.create');
 
+//For adding an image
+Route::get('/add-image',[ImageUploadController::class,'addImage'])->name('images.add');
+
+//For storing an image
+Route::post('/store-image',[ImageUploadController::class,'storeImage'])->name('images.store');
+
+//For showing an image
+Route::get('/view-image',[ImageUploadController::class,'viewImage'])->name('images.view');
 
 require __DIR__.'/auth.php';
