@@ -37,13 +37,6 @@
     <input type="text" class="form-control" name="description"/>
 </div>
 
-
-
-<button type="submit" class="btn btn-primary mt-5">Ajouter</button>
-   </form>
-</div>
-</div>
-
 //add_image.blade.php
 <div class="container">
   <form method="post" action="{{ route('images.store') }}" 
@@ -58,4 +51,9 @@
       <button type="submit" class="btn btn-success">Add</button>
     </div>
   </form>
+</div>
+
+<button type="submit" class="btn btn-primary mt-5">Ajouter</button>
+   </form>
+</div>
 </div>

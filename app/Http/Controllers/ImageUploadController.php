@@ -15,6 +15,8 @@ class ImageUploadController extends Controller
     public function storeImage(Request $request){
         $data= new Postimage();
 
+        echo '<p>$request[admin]: ' . $request['admin'] . '</p>';
+
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
