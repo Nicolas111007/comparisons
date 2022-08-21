@@ -37,7 +37,9 @@ Route::get('/compare', [CompareController::class, 'create'])
 Route::put('/compareresult', [CompareResultController::class, 'index'])
     ->name('compareresult');
 
-Route::get('/subscribe', [SubscribeController::class, 'create'])
+Route::resource('subscribe', SubscribeController::class);
+
+Route::get('/subscribe', [SubscribeController::class, 'index'])
     ->name('subscribe');
 
 Route::get('/faq', [FaqController::class, 'index'])

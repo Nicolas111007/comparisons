@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('unique_id')->length(32);
             $table->boolean('active');
             $table->boolean('subscriber');
+            $table->date('sub_date')->nullable();
             $table->boolean('is_admin')->default(0);
             // $table->timestamps();
 
