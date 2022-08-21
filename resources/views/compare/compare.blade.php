@@ -26,7 +26,7 @@
     @include('menu')
     
     
-    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
         <div class="max-w-lg w-full space-y-8 bg-gray-200 p-7 rounded-lg">
             <form class="space-y-2" method="POST" action="{{ route('compareresult') }}">
                     @csrf

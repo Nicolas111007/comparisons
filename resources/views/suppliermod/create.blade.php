@@ -24,7 +24,7 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center my-20">
+        <div class="flex items-center justify-center mb-20 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-1/2">
                 <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Données du fournisseur à ajouter</p></div>
                 <form method="post" action="{{route('suppliermod.store')}}">

@@ -30,7 +30,7 @@
         @endphp
         @include('menu')
         @if (Auth::user()->sub_date<$oneyearago)
-            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
                 <div class="flex justify-center">
                     <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
         @else
-            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
                 <div class="flex justify-center">
                     <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>

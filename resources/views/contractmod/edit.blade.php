@@ -24,7 +24,7 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center my-20">
+        <div class="flex items-center justify-center mb-20 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
                 <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>Données du contrat à modifier</h2></div>
                 @if ($contracttomod->deleted==1)

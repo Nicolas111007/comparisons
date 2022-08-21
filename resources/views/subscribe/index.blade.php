@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Mon compte</title>
+        <title>Abonnement</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
         
         @include('menu')
         
-        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
             
             @if (Auth::user()->sub_date<$oneyearago)
                 <div class="flex justify-center">
