@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Résultat comparaison</title>
+        <title>Résultat de la comparaison</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     </head>
     <body class="antialiased">
         @include('menu')
-        <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
             <div class="w-9/12 w-full space-y-8">
                 <h2 class="text-center underline font-bold text-sky-400"><span class="bg-white p-2 rounded-lg">Données fournies</span></h2>
                 

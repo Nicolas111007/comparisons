@@ -25,7 +25,7 @@
         @include('menu')
 
         <div class="flex justify-center">
-            <div class="flex items-center justify-between my-20 w-9/12">
+            <div class="flex items-center justify-between mb-20 mt-36 w-9/12">
                 <div class="bg-sky-400 p-5 rounded-lg w-3/12 min-h-full">
                     <div class="pb-5 max-w-7xl mx-auto font-bold text-black text-center underline">
                         <p>Ajout / modification de fournisseur</p>

@@ -25,7 +25,7 @@
         
         @include('menu')
         
-        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
+        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
                     <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Pourquoi utiliser Comparateur Gaz et Électricité</p>

@@ -69,7 +69,7 @@
         header( "refresh:15;url='/'" );
     @endphp
     
-    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
         <div class="max-w-lg w-full bg-green-200 p-7 rounded-lg">
             @if ($civility_id==1)
                 <p class="text-center mb-5">Chère Madame {{$name}}, votre message a bien été envoyé !</p>

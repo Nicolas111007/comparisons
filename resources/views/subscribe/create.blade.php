@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ajout de prix</title>
+        <title>Achat d'abonnement</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@
             @php
                 header( "refresh:15;url='/dashboard'" );
             @endphp
-            <div class="flex justify-center pt-20">
+            <div class="flex justify-center pt-20 mt-36">
                 <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                     <div class="alert alert-success font-bold">
                         <p>{{Session::get('success')}}</p>
@@ -84,7 +84,7 @@
             @php
                 header( "refresh:15;url='/dashboard'" );
             @endphp
-            <div class="flex justify-center pt-20">
+            <div class="flex justify-center pt-20 mt-36">
                 <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                     <div class="alert alert-success font-bold">
                         <p>Vous êtes maintenant abonné pour une période d'un an !</p>
@@ -96,7 +96,7 @@
         @endif
 
         @if (Auth::user()->sub_date<$oneyearago)
-            <div class="flex items-center justify-center my-20">
+            <div class="flex items-center justify-center mb-20 mt-36">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/3">
                     <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline text-white"><p>Résumé de l'abonnement</p></div>
                     <form method="post" action="{{route('subscribe.store')}}" id="subscribeForm">
@@ -134,7 +134,7 @@
             @php
                 header( "refresh:15;url='/dashboard'" );
             @endphp
-            <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
             <div class="max-w-lg w-full bg-green-200 p-7 rounded-lg">
                 @if (Auth::user()->civility_id==1)
                     <p class="text-center mb-5">Chère Madame {{Auth::user()->name}}, vous êtes déjà abonnée !</p>
