@@ -34,6 +34,7 @@ class User extends Authenticatable
         'unique_id',
         'active',
         'subscriber',
+        'is_admin',
     ];
 
     /**

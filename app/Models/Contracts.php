@@ -14,7 +14,7 @@ class Contracts extends Model
      *
      * @var array
      */
-    protected $fillable = ['suppliers_id', 'energy_type_id', 'contract_name', 'var_fix', 'time_contract', 'abbreviation', 'active_contract'];
+    protected $fillable = ['suppliers_id', 'energy_type_id', 'contract_name', 'var_fix', 'time_contract', 'abbreviation', 'active_contract', 'deleted'];
 
    /**
      * The table associated with the model.

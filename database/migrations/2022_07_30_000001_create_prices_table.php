@@ -27,6 +27,7 @@ class CreatePricesTable extends Migration
             $table->decimal('excl_night',11,7)->nullable();
             $table->decimal('g_and_c_energy',11,7)->nullable();
             $table->date('date_price_val');
+            $table->boolean('deleted')->default(0);
 
             $table->foreign('contract_id')->references('id')->on('contracts')
                     ->onDelete('restrict')->onUpdate('cascade');

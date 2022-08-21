@@ -17,6 +17,7 @@ class CreateSuppliersTable extends Migration
             $table->id();
             $table->string('supplier_name')->length(30);
             $table->boolean('active_supplier');
+            $table->boolean('deleted')->default(0);
         });
     }
 
