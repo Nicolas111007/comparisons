@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
         @include('menu')
         <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
             <div class="w-9/12 w-full space-y-8">
@@ -832,5 +832,6 @@
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

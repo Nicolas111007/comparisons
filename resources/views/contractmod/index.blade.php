@@ -24,7 +24,7 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center mb-20 mt-36">
+        <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
                 <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Modification d'un contrat</p></div>
                 <div class="mb-5"><p>Pour pouvoir supprimer un contrat, celui-ci ne doit plus avoir de fiche de prix liés et doit être d'abord inactivé.</p></div>
@@ -132,5 +132,6 @@
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

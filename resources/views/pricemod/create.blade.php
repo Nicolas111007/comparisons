@@ -24,7 +24,7 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center mb-20 mt-36">
+        <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
                 <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Données de la fiche de prix à ajouter</p></div>
                 <form method="post" action="{{route('pricemod.store')}}">
@@ -240,5 +240,6 @@
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

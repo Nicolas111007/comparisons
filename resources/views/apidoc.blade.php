@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Mon compte</title>
+        <title>Documentation de l'API</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,57 +21,44 @@
             }
         </style>
     </head>
-    <body class="antialiased my-36">
-        @php
-            $today = date("Y-m-d"); 
-            $today=explode ('-', $today);
-            $today[0]=$today[0]-1;
-            $oneyearago=$today[0] . '-' . $today[1] . '-' . $today[2];
-        @endphp
-        @include('menu')
-        @if (Auth::user()->sub_date<$oneyearago)
-            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
-                <div class="flex justify-center">
-                    <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>
-                        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 text-center underline">Pour bénéficier des dernières informations, vous pouvez opter pour un abonnement annuel d'un montant de 60,00 €</div>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                        <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">Vous aurez alors notamment la possibilité:</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu des nouveaux tarifs des fournisseurs</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- De recevoir les dernières informations sur les marchés de l'énergie</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu lorsque les tarifs sont en baisse</div>
-                        <div class="flex items-center justify-center mt-4">
-                            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('subscribe')}}" class="btn btn-success">Je m'abonne</a>
-                        </div>
-                    </div>
-                </div>
+    <body class="antialiased">
+    
+    @include('menu')
+    
+    
+        <div class="flex items-center justify-center mb-36 mt-36">
+            <div class="bg-sky-400 p-5 rounded-lg w-1/2">
+                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center underline">Documentation API</div>
+
+                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Fonctionnement de l’API</div>
+
+                <p class="max-w-7xl mx-auto mb-5 sm:px-6 lg:px-8">Lors de l’arrivée d’un utilisateur sur la page de sélection, celui-ci peut choisir de voir :</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">-	Toutes les régions ou une en particulier</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">-	Tous les fournisseurs ou un fournisseur en particulier</p>
+                <p class="max-w-7xl mx-auto sm:px-6 mb-5 lg:px-8">-	Tous les contrats ou un en particulier</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Par défaut l’affichage se fait sur toutes les régions, tous les fournisseurs et tous les contrats, l’utilisateur est alors invité à modifier cette sélection par défaut ou la laisser telle quelle et ensuite valider son choix pour arriver sur l’affichage des données de l’API.</p>
+
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Affichage des données</div>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les données sont affichées de manière brute. Pour effectuer une mise en page succincte il est recommandé à l’utilisateur de naviguer via Chrome et télécharger l’extension JSON Formatter qui s’installera alors automatiquement permettant une plus grande lisibilité des données.</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Cet add-on peut être trouvé sur la page <a class="underline text-white" href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa" target="_blank">Json Formatter</a></p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les 12 informations principales, affichées pour chaque fiche de prix individuelle, ont été formatées dans un souci de compréhension pour l’utilisateur, qu’il soit professionnel ou non.</p>
+
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Mise à jour</div>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les informations des contrats, fournisseurs et fiches de prix sont mises à jour dès qu’un fournisseur apparaît sur le marché ou met à jour ses fiches de prix et dès qu’il est possible pour notre équipe de procéder à ces mises à jour.</p>
+
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">But de l’API</div>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Cette API permet à tout un chacun, et plus particulièrement aux développeurs de comparateurs de prix, de récupérer et réutiliser les données des fournisseurs, contrats et fiches de prix qui leurs sont utiles en fonction d’un fournisseur, d’un contrat et / ou d’une région.</p>
+
             </div>
-        @else
-            <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
-                <div class="flex justify-center">
-                    <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center font-bold">Bonjour {{Auth::user()->first_name}}, nous sommes heureux de vous compter parmi nos membres</div>
-                        <div class="py-5 max-w-7xl mx-auto sm:px-6 lg:px-8 text-center underline">Vous avez souscrit à un abonnement annuel vous permettant de bénéficier des avantages suivants:</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu des nouveaux tarifs des fournisseurs</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- De recevoir les dernières informations sur les marchés de l'énergie</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">- D'être prévenu lorsque les tarifs sont en baisse</div>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                        <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Vous souhaitez voir les informations relatives à votre abonnement ?</div>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Cliquez sur le lien ci-dessous</div>
-                        <div class="flex items-center justify-center mt-4">
-                            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('subscribe')}}" class="btn btn-success">Information d'abonnement</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-        @include('footer')
+        </div>
+
+    @include('footer')
+
     </body>
 </html>
-

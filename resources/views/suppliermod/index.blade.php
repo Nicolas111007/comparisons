@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
         @include('menu')
 
         <div class="flex items-center justify-center mb-20 mt-36">
@@ -92,5 +92,6 @@
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
         @include('menu')
 
         <div class="flex items-center justify-center mb-20 mt-36">
@@ -35,12 +35,14 @@
         </div>
         <div class="flex items-center justify-center my-20">
             <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-white text-center">Si vous souhaitez visualiser les fiches de prix, vous pouvez également consulter notre API.</div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-white text-center">Si vous souhaitez visualiser les fiches de prix, vous pouvez également consulter notre API, ainsi que sa documentation.</div>
                 
                 <div class="flex items-center justify-center mt-4">
                     <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('prices.index')}}" class="btn btn-success">Je consulte l'API</a>
+                    <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 hover:text-black hover:font-bold active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-gray-900" href="{{ route('apidoc.index')}}" class="btn btn-success">Je consulte la documentation relative à l'API</a>
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

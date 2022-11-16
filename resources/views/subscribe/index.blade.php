@@ -64,6 +64,7 @@
                 </div>
             @endif
         </div>
+        @include('footer')
     </body>
 </html>
 

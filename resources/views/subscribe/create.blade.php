@@ -144,6 +144,7 @@
                 <p class="text-center mb-5" id="countdown_show"></p>
             </div>
         @endif
+        @include('footer')
         
     </body>
 </html>

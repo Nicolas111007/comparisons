@@ -33,7 +33,7 @@
             }
         </script>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
     
     @include('menu')
     
@@ -143,5 +143,6 @@
                 </form>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

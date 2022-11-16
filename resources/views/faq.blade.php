@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
         
         @include('menu')
         
@@ -76,6 +76,7 @@
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>
 

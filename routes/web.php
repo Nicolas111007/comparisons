@@ -11,6 +11,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SupplierModController;
 use App\Http\Controllers\ContractModController;
 use App\Http\Controllers\PriceModController;
+use App\Http\Controllers\APIDocController;
+use App\Http\Controllers\RgpdController;
+use App\Http\Controllers\CguCgvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,5 +84,10 @@ Route::get('/pricemod', [PriceModController::class, 'index'])
 Route::get('/pricemod/create', [PriceModController::class, 'create'])
     ->name('pricemod.create');
 
+Route::resource('apidoc', APIDocController::class);
+
+Route::resource('rgpd', RgpdController::class);
+
+Route::resource('cgucgv', CguCgvController::class);
 
 require __DIR__.'/auth.php';

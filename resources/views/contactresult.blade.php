@@ -62,7 +62,7 @@
         });
         </script>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
     
     @include('menu')
     @php
@@ -88,5 +88,6 @@
             <p class="mt-3"><span class="underline font-bold">Votre message:</span> {{$message}}</p>
         </div>
     </div>
+    @include('footer')
     </body>
 </html>
