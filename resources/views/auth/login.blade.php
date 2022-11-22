@@ -1,5 +1,5 @@
 @include('menu')
-<title>Connexion</title>
+<title>{{__("Connexion")}}</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

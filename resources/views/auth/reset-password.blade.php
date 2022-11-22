@@ -1,5 +1,5 @@
 @include('menu')
-<title>Réinitialisation du mot de passe</title>
+<title>{{ __("Réinitialisation du mot de passe") }}</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -42,7 +42,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Réinitialiser le mot de passe') }}
+                    {{ __("Réinitialiser le mot de passe") }}
                 </x-button>
             </div>
         </form>

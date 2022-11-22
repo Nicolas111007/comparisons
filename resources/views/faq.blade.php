@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>FAQ</title>
+        <title>{{__("FAQ")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,54 +25,53 @@
         
         @include('menu')
         
-        <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
+		<div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center mt-36">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
-                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Pourquoi utiliser Comparateur Gaz et Électricité</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ce site vous permettra de savoir s'il est ou non utile de changer actuellement de contrat au vu du prix de votre contrat actuel.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le service est gratuit et se base sur votre consommation réelle.</p>
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">{{__("Pourquoi utiliser Comparateur Gaz et Électricité")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Ce site vous permettra de savoir s'il est ou non utile de changer actuellement de contrat au vu du prix de votre contrat actuel.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Le service est gratuit et se base sur votre consommation réelle.")}}</p>
                 </div>
             </div>
         </div>
         <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
-                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">D'où proviennent les données utilisées par le comparateur</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Toutes les données proviennent des différents fournisseurs et de leurs cartes tarifaires.</p>
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">{{__("D'où proviennent les données utilisées par le comparateur")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Toutes les données proviennent des différents fournisseurs et de leurs cartes tarifaires.")}}</p>
                 </div>
             </div>
         </div>
         <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
-                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Est-ce que l'utilisation du comparateur est gratuite</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Oui, quoi qu'il arrive vous ne payez pas pour effectuer votre comparaison</p>
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">{{__("Est-ce que l'utilisation du comparateur est gratuite")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Oui, quoi qu'il arrive vous ne payez pas pour effectuer votre comparaison")}}</p>
                 </div>
             </div>
         </div>
         <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
-                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">J'ai effectué plusieurs comparaisons sur plusieurs sites et les montants varient, pourquoi?</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Tout d'abord, ce comparateur ne fait une comparaison que sur les prix des fournisseurs, ce qui implique que les tarifs de réseaux et distribution, ainsi que les diverses taxes fédérales ne sont pas inclues dans ce calcul.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ces tarifs ne sont pas calculés car ils sont exactement les mêmes, peu importe le fournisseur que vous choisissez.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Il se peut toutefois que certains montant diffèrent de quelques centimes, voire quelques euros en fonction du comparateur choisi, certain effectuant des arrondis lors de leurs calculs.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Ce site n'effectue pas d'arrondis, excepté sur le résultat final.</p>
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">{{__("J'ai effectué plusieurs comparaisons sur plusieurs sites et les montants varient, pourquoi?")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Tout d'abord, ce comparateur ne fait une comparaison que sur les prix des fournisseurs, ce qui implique que les tarifs de réseaux et distribution, ainsi que les diverses taxes fédérales ne sont pas inclues dans ce calcul.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Ces tarifs ne sont pas calculés car ils sont exactement les mêmes, peu importe le fournisseur que vous choisissez.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Il se peut toutefois que certains montant diffèrent de quelques centimes, voire quelques euros en fonction du comparateur choisi, certain effectuant des arrondis lors de leurs calculs.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Ce site n'effectue pas d'arrondis, excepté sur le résultat final.")}}</p>
                 </div>
             </div>
         </div>
         <div class="pb-12 max-w-7xl mx-auto sm:px-6 lg:px-8 items-center">
             <div class="flex justify-center">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/2 text-justify">
-                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">Les prix de mon contrat ne concordent pas avec ceux du site, pourquoi?</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Il faut tout d'abord distinguer deux catégories de contrat, à savoir les contrats variables et les contrats fixes.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">Dans le cas des contrats fixes:</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le comparateur prend en compte la date de début de votre contrat pour effectuer une comparaison sur 1 an.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le prix de votre contrat ne varie pas sur la durée de celui-ci.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">Dans le cas des contrats variables:</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le comparateur prend en compte le mois en cours pour effectuer une comparaison sur 1 an.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">Le prix de votre contrat variant chaque mois il est inutile de comparer un prix d'un mois passé qui n'est plus le prix actuel.</p>
-                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white"></p>
+                    <p class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline">{{__("Les prix de mon contrat ne concordent pas avec ceux du site, pourquoi?")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Il faut tout d'abord distinguer deux catégories de contrat, à savoir les contrats variables et les contrats fixes.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">{{__("Dans le cas des contrats fixes:")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Le comparateur prend en compte la date de début de votre contrat pour effectuer une comparaison sur 1 an.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Le prix de votre contrat ne varie pas sur la durée de celui-ci.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white underline my-2 font-bold">{{__("Dans le cas des contrats variables:")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Le comparateur prend en compte le mois en cours pour effectuer une comparaison sur 1 an.")}}</p>
+                    <p class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">{{__("Le prix de votre contrat variant chaque mois il est inutile de comparer un prix d'un mois passé qui n'est plus le prix actuel.")}}</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @include('menu')
-<title>Inscription</title>
+<title>{{__("Inscription")}}</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -28,7 +28,7 @@
             <!-- Locality -->
 
             <div>
-                <x-label for="pc_locality_id" :value="__('Locality')" />
+                <x-label for="pc_locality_id" :value="__('Localité')" />
                 <select class="w-full" id="pc_locality_id" name="pc_locality_id">
                     <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
                     @foreach ($locality as $locality)

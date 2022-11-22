@@ -1,5 +1,5 @@
 <x-guest-layout>
-<title>Vérification d\'e-mail</title>
+<title>{{ __("Vérification d\'e-mail") }}</title>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -8,12 +8,12 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __("Merci pour votre inscription ! Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer par e-mail ? Si vous ne recevez pas l'e-mail, nous vous en enverrons un autre.") }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                {{ __("Un nouveau lien de vérification a été envoyé à l'adresse e-mail que vous avez fournie lors de l'inscription.") }}
             </div>
         @endif
 
@@ -23,7 +23,7 @@
 
                 <div>
                     <x-button>
-                        {{ __('Resend Verification Email') }}
+                        {{ __("Renvoyer le courrier électronique de vérification") }}
                     </x-button>
                 </div>
             </form>
@@ -32,7 +32,7 @@
                 @csrf
 
                 <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
+                    {{ __("Se déconnecter") }}
                 </button>
             </form>
         </div>

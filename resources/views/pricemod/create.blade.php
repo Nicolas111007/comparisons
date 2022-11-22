@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ajout de prix</title>
+        <title>{{__("Ajout de prix")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,39 +26,39 @@
 
         <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Données de la fiche de prix à ajouter</p></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>{{__("Données de la fiche de prix à ajouter")}}</p></div>
                 <form method="post" action="{{route('pricemod.store')}}">
                     @csrf
                     <table class="m-auto mb-10">
                     <tr>
-                        <th class="px-3 text-white" colspan=13>Données de la fiche de prix</th>
+                        <th class="px-3 text-white" colspan=13>{{__("Données de la fiche de prix")}}</th>
                     </tr>
                     <tr>
                         <th class="px-3 text-white" colspan=5></th>
-                        <th class="px-3 text-white border border-t-white border-l-white border-r-white border-b-0" colspan=6><label for="subscription">Prix</label></th>
+                        <th class="px-3 text-white border border-t-white border-l-white border-r-white border-b-0" colspan=6><label for="subscription">{{__("Prix")}}</label></th>
                         <th class="px-3 text-white"></th>
                     </tr>
                     <tr>
                     <th class="px-3 text-white"></th>
                         <th class="px-3 text-white" colspan=4></th>
                         <th class="px-3 text-white border border-t-0 border-l-white border-r-0 border-b-0" colspan=2></th>
-                        <th class="px-3 text-white border border-white" colspan=2><label for="bi_day">Bi-horaire</label></th>
+                        <th class="px-3 text-white border border-white" colspan=2><label for="bi_day">{{__("Bi-horaire")}}</label></th>
                         <th class="px-3 text-white border border-t-0 border-l-0 border-r-white border-b-0" colspan=2></th>
                         <th class="px-3 text-white"></th>
                     </tr>
                     <tr>
-                        <th class="px-3 text-white"><label for="contract_id">Contrat</label></th>
-                        <th class="px-3 text-white"><label for="area_id">Région</label></th>
-                        <th class="px-3 text-white"><label for="energy_type_id">Type d'énergie</label></th>
-                        <th class="px-3 text-white"><label for="suppliers_id">Fournisseur</label></th>
-                        <th class="px-3 text-white"><label for="var_fix">Variable/Fixe</label></th>
-                        <th class="px-3 text-white border border-white"><label for="subscription">Abonnement</label></th>
-                        <th class="px-3 text-white border border-white"><label for="mono">Mono</label></th>
-                        <th class="px-3 text-white border border-white"><label for="bi_day">Jour</label></th>
-                        <th class="px-3 text-white border border-white"><label for="bi_night">Nuit</label></th>
-                        <th class="px-3 text-white border border-white"><label for="excl_night">Excl. nuit</label></th>
-                        <th class="px-3 text-white border border-white"><label for="g_and_c_energy">Én. verte</label></th>
-                        <th class="px-3 text-white"><label for="date_price_val">Date valeur</label></th>
+                        <th class="px-3 text-white"><label for="contract_id">{{__("Contrat")}}</label></th>
+                        <th class="px-3 text-white"><label for="area_id">{{__("Région")}}</label></th>
+                        <th class="px-3 text-white"><label for="energy_type_id">{{__("Type d'énergie")}}</label></th>
+                        <th class="px-3 text-white"><label for="suppliers_id">{{__("Fournisseur")}}</label></th>
+                        <th class="px-3 text-white"><label for="var_fix">{{__("Variable/Fixe")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="subscription">{{__("Abonnement")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="mono">{{__("Mono")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="bi_day">{{__("Jour")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="bi_night">{{__("Nuit")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="excl_night">{{__("Excl. nuit")}}</label></th>
+                        <th class="px-3 text-white border border-white"><label for="g_and_c_energy">{{__("Én. verte")}}</label></th>
+                        <th class="px-3 text-white"><label for="date_price_val">{{__("Date valeur")}}</label></th>
                     </tr>
                     <tr>
                         <td class="font-bold px-3">
@@ -148,42 +148,42 @@
                     </tr>
                     </table>
                     <div class="flex justify-center mb-7">
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">Enregistrer</button>
-                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">{{__("Enregistrer")}}</button>
+                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">{{__("Annuler")}}</button>
                     </div>
                 </form>
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Liste des fiches de prix</p></div>
-                <div class="mb-5"><p>Pour ajouter une fiche de prix, veuillez vous rendre en bas du présent formulaire</p></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>{{__("Liste des fiches de prix")}}</p></div>
+                <div class="mb-5"><p>{{__("Pour ajouter une fiche de prix, veuillez vous rendre en bas du présent formulaire")}}</p></div>
                 <table class="m-auto">
                     <tr>
                         <th class="px-3 text-white" colspan=6></th>
-                        <th class="px-3 text-white border border-t-white border-l-white border-r-white border-b-0" colspan=6>Prix</th>
+                        <th class="px-3 text-white border border-t-white border-l-white border-r-white border-b-0" colspan=6>{{__("Prix")}}</th>
                         <th class="px-3 text-white" colspan=3></th>
                     </tr>
                     <tr>
                     <th class="px-3 text-white"></th>
                         <th class="px-3 text-white" colspan=5></th>
                         <th class="px-3 text-white border border-t-0 border-l-white border-r-0 border-b-0" colspan=2></th>
-                        <th class="px-3 text-white border border-white" colspan=2>Bi-horaire</th>
+                        <th class="px-3 text-white border border-white" colspan=2>{{__("Bi-horaire")}}</th>
                         <th class="px-3 text-white border border-t-0 border-l-0 border-r-white border-b-0" colspan=2></th>
                         <th class="px-3 text-white" colspan=3></th>
                     </tr>
                     <tr>
-                        <th class="px-3 text-white">ID</th>
-                        <th class="px-3 text-white">Contrat</th>
-                        <th class="px-3 text-white">Région</th>
-                        <th class="px-3 text-white">Type d'énergie</th>
-                        <th class="px-3 text-white">Fournisseur</th>
-                        <th class="px-3 text-white">Variable/Fixe</th>
-                        <th class="px-3 text-white border border-white">Abonnement</th>
-                        <th class="px-3 text-white border border-white">Mono</th>
-                        <th class="px-3 text-white border border-white">Jour</th>
-                        <th class="px-3 text-white border border-white">Nuit</th>
-                        <th class="px-3 text-white border border-white">Excl. nuit</th>
-                        <th class="px-3 text-white border border-white">Én. verte</th>
-                        <th class="px-3 text-white">Date valeur</th>
-                        <th class="px-3 text-white">Modification</th>
-                        <th class="px-3 text-white">Suppression</th>
+                        <th class="px-3 text-white">{{__("ID")}}</th>
+                        <th class="px-3 text-white">{{__("Contrat")}}</th>
+                        <th class="px-3 text-white">{{__("Région")}}</th>
+                        <th class="px-3 text-white">{{__("Type d'énergie")}}</th>
+                        <th class="px-3 text-white">{{__("Fournisseur")}}</th>
+                        <th class="px-3 text-white">{{__("Variable/Fixe")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Abonnement")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Mono")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Jour")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Nuit")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Excl. nuit")}}</th>
+                        <th class="px-3 text-white border border-white">{{__("Én. verte")}}</th>
+                        <th class="px-3 text-white">{{__("Date valeur")}}</th>
+                        <th class="px-3 text-white">{{__("Modification")}}</th>
+                        <th class="px-3 text-white">{{__("Suppression")}}</th>
                     </tr>
                     @foreach ($prices as $prices)
                         @if ($prices['deleted']==0)
@@ -200,9 +200,9 @@
                                     @endif
                                 @endforeach
                                 @if ($prices['energy_type_id']==1)
-                                    <td class="px-3 bg-yellow-400">Électricité</td>
+                                    <td class="px-3 bg-yellow-400">{{__("Électricité")}}</td>
                                 @else
-                                    <td class="px-3">Gaz</td>
+                                    <td class="px-3">{{__("Gaz")}}</td>
                                 @endif
                                 @foreach ($suppliers as $suppliers2)
                                     @if ($suppliers2['id']==$prices['suppliers_id'])
@@ -210,9 +210,9 @@
                                     @endif
                                 @endforeach
                                 @if ($prices['var_fix']==0)
-                                    <td class="px-3">Variable</td>
+                                    <td class="px-3">{{__("Variable")}}</td>
                                 @else
-                                    <td class="px-3">Fixe</td>
+                                    <td class="px-3">{{__("Fixe")}}</td>
                                 @endif
                                 <td class="font-bold text-center px-3">{{$prices['subscription']}}</td>
                                 <td class="font-bold text-center px-3">{{$prices['mono']}}</td>
@@ -222,13 +222,13 @@
                                 <td class="font-bold text-center px-3">{{$prices['g_and_c_energy']}}</td>
                                 <td class="font-bold text-center px-3">{{$prices['date_price_val']}}</td>
                                 
-                                <td class="px-3"><a href="{{route('pricemod.edit', $prices->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3"><a href="{{route('pricemod.edit', $prices->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">{{__("Modifier")}}</a></td>
                                 <td class="px-3">
                                     <form action="{{route('pricemod.destroy', $prices->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                         <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
-                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">{{__("Supprimer")}}</button>
                                     </form>
                                 </td>
                             </tr>
@@ -236,7 +236,7 @@
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">
-                    <a href="{{route('pricemod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter une fiche de prix</a>
+                    <a href="{{route('pricemod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">{{__("Ajouter une fiche de prix")}}</a>
                 </div>
             </div>
         </div>

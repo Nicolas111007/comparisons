@@ -14,6 +14,7 @@ use App\Http\Controllers\PriceModController;
 use App\Http\Controllers\APIDocController;
 use App\Http\Controllers\RgpdController;
 use App\Http\Controllers\CguCgvController;
+use App\Http\Controllers\LanguagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,5 +90,7 @@ Route::resource('apidoc', APIDocController::class);
 Route::resource('rgpd', RgpdController::class);
 
 Route::resource('cgucgv', CguCgvController::class);
+
+Route::get('/lang/{locale}', [LanguagesController::class,'lang_change'])->name('lang.change');
 
 require __DIR__.'/auth.php';

@@ -36,10 +36,6 @@
                         </a>
                     </div>
                 @endif
-                
-
-                
-                
             </div>
         </div>
     </div>

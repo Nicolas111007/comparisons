@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Documentation de l'API</title>
+        <title>{{__("Documentation de l'API")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,32 +28,146 @@
     
         <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center underline">Documentation API</div>
+                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center underline">{{__("Documentation API")}}</div>
 
-                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Fonctionnement de l’API</div>
+                <div class="pb-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">{{__("Fonctionnement de l’API")}}</div>
 
-                <p class="max-w-7xl mx-auto mb-5 sm:px-6 lg:px-8">Lors de l’arrivée d’un utilisateur sur la page de sélection, celui-ci peut choisir de voir :</p>
+                <p class="max-w-7xl mx-auto mb-5 sm:px-6 lg:px-8">{{__("Lors de l’arrivée d’un utilisateur sur la page de sélection, celui-ci peut choisir de voir :")}}</p>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">-	Toutes les régions ou une en particulier</p>
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">-	Tous les fournisseurs ou un fournisseur en particulier</p>
-                <p class="max-w-7xl mx-auto sm:px-6 mb-5 lg:px-8">-	Tous les contrats ou un en particulier</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("- Toutes les régions ou une en particulier")}}</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("- Tous les fournisseurs ou un en particulier")}}</p>
+                <p class="max-w-7xl mx-auto sm:px-6 mb-5 lg:px-8">{{__("- Toutes les variabilités de contrats ou une en particulier")}}</p>
+                <p class="max-w-7xl mx-auto sm:px-6 mb-5 lg:px-8">{{__("- Toutes les mois ou un en particulier")}}</p>
+                <p class="max-w-7xl mx-auto sm:px-6 mb-5 lg:px-8">{{__("- Tous les types d'énergie ou un en particulier")}}</p>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Par défaut l’affichage se fait sur toutes les régions, tous les fournisseurs et tous les contrats, l’utilisateur est alors invité à modifier cette sélection par défaut ou la laisser telle quelle et ensuite valider son choix pour arriver sur l’affichage des données de l’API.</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Par défaut l’affichage se fait sur toutes les régions, tous les fournisseurs et tous les contrats, l’utilisateur est alors invité à modifier cette sélection par défaut ou la laisser telle quelle et ensuite valider son choix pour arriver sur l’affichage des données de l’API.")}}</p>
 
-                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Affichage des données</div>
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">{{__("Affichage des données")}}</div>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les données sont affichées de manière brute. Pour effectuer une mise en page succincte il est recommandé à l’utilisateur de naviguer via Chrome et télécharger l’extension JSON Formatter qui s’installera alors automatiquement permettant une plus grande lisibilité des données.</p>
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Cet add-on peut être trouvé sur la page <a class="underline text-white" href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa" target="_blank">Json Formatter</a></p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Les données sont affichées de manière brute. Pour effectuer une mise en page succincte il est recommandé à l’utilisateur de naviguer via Chrome et télécharger l’extension JSON Formatter qui s’installera alors automatiquement permettant une plus grande lisibilité des données.")}}</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Cet add-on peut être trouvé sur la page")}} <a class="underline text-white" href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa" target="_blank">Json Formatter</a></p>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les 12 informations principales, affichées pour chaque fiche de prix individuelle, ont été formatées dans un souci de compréhension pour l’utilisateur, qu’il soit professionnel ou non.</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Les 12 informations principales, affichées pour chaque fiche de prix individuelle, ont été formatées dans un souci de compréhension pour l’utilisateur, qu’il soit professionnel ou non.")}}</p>
 
-                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">Mise à jour</div>
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">{{__("Critères de sélection")}}</div>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Les informations des contrats, fournisseurs et fiches de prix sont mises à jour dès qu’un fournisseur apparaît sur le marché ou met à jour ses fiches de prix et dès qu’il est possible pour notre équipe de procéder à ces mises à jour.</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Plusieurs critères peuvent être utilisés pour sélectionner certaines données et pas d’autres. Ces critères sont au nombre de 5 et peuvent être combinés dans l’ordre ou le désordre selon les informations reprises dans le tableau qui suit.")}}</p>
 
-                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">But de l’API</div>
 
-                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">Cette API permet à tout un chacun, et plus particulièrement aux développeurs de comparateurs de prix, de récupérer et réutiliser les données des fournisseurs, contrats et fiches de prix qui leurs sont utiles en fonction d’un fournisseur, d’un contrat et / ou d’une région.</p>
+                <table class="container mx-auto max-w-3xl">
+                    <tr>
+                        <th class="px-2 border border-slate-600">{{__("Critère")}}</th>
+                        <th class="px-2 border border-slate-600">{{__("Adresse")}}</th>
+                        <th class="px-2 border border-slate-600">{{__("Valeurs possibles {}")}}</th>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600" rowspan=3>{{__("Région")}}</td>
+                        <td class="px-2 border border-slate-600" rowspan=3>/area/{Area}</td>
+                        <td class="px-2 border border-slate-600">/area/Wallonie</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/area/Bruxelles</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/area/Flandre</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600" rowspan=11>{{__("Nom du fournisseur")}}</td>
+                        <td class="px-2 border border-slate-600" rowspan=11>/supp_name/{Supp_name}</td>
+                        <td class="px-2 border border-slate-600">/supp_name/Antargaz</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Eneco</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Energie2030</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Engie</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Essent</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Lampiris</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Luminus</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Mega</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Octa+</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Watz</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/supp_name/Bolt</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600" rowspan=2>{{__("Contrat variable ou fixe")}}</td>
+                        <td class="px-2 border border-slate-600" rowspan=2>/var_fix/{var_fix}</td>
+                        <td class="px-2 border border-slate-600">/var_fix/v</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/var_fix/f</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600" rowspan=3>{{__("Mois de fiches de prix")}}</td>
+                        <td class="px-2 border border-slate-600" rowspan=3>/month/{month}</td>
+                        <td class="px-2 border border-slate-600">/month/02</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/month/03</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/month/04</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600" rowspan=4>{{__("Type d’énergie (gaz ou électricité)")}}</td>
+                        <td class="px-2 border border-slate-600" rowspan=4>/energy_type/{energy_type}</td>
+                        <td class="px-2 border border-slate-600">/energy_type/e</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/energy_type/E</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/energy_type/g</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 border border-slate-600">/energy_type/G</td>
+                    </tr>
+                </table>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("À la suite, voici quelques exemples de combinaisons de critères.")}}</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Souhait de récupération de tous les contrats variables d’Antargaz pour la Flandre. Écritures possibles :")}}</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/supp_name/Antargaz/area/Flandre/var_fix/v</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/supp_name/Antargaz/var_fix/v/area/Flandre</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/area/Flandre/supp_name/Antargaz/var_fix/v</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/area/Flandre/var_fix/v/supp_name/Antargaz</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/var_fix/v/area/Flandre/supp_name/Antargaz</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/var_fix/v/supp_name/Antargaz/area/Flandre</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Souhait de récupération de tous les contrats du mois de février 2022 pour le gaz. Écritures possibles :")}}</p>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/month/02/energy_type/g</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/month/02/energy_type/G</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/energy_type/g/month/02</p>
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-center">/energy_type/G/month/02</p>
+
+
+
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">{{__("Mise à jour")}}</div>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Les informations des contrats, fournisseurs et fiches de prix sont mises à jour dès qu’un fournisseur apparaît sur le marché ou met à jour ses fiches de prix et dès qu’il est possible pour notre équipe de procéder à ces mises à jour.")}}</p>
+
+                <div class="py-5 max-w-7xl mx-auto my-4 sm:px-6 lg:px-8 font-bold text-white underline">{{__("But de l’API")}}</div>
+
+                <p class="max-w-7xl mx-auto my-4 sm:px-6 lg:px-8">{{__("Cette API permet à tout un chacun, et plus particulièrement aux développeurs de comparateurs de prix, de récupérer et réutiliser les données des fournisseurs, contrats et fiches de prix qui leurs sont utiles en fonction d'une région, d’un fournisseur, d’une variabilité de contrat, d'un mois en particulier et / ou d’une région.")}}</p>
 
             </div>
         </div>

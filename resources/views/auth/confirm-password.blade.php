@@ -8,7 +8,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Cette partie de l\application est sécurisée. Confirmez votre mot de passe pour continuer.') }}
+            {{ __('Cette partie de l\'application est sécurisée. Confirmez votre mot de passe pour continuer.') }}
         </div>
 
         <!-- Validation Errors -->
@@ -19,7 +19,7 @@
 
             <!-- Password -->
             <div>
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Mot de passe')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"

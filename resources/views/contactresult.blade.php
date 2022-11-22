@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Envoi du message</title>
+        <title>{{__("Envoi du message")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -43,11 +43,11 @@
                 seconds = ((seconds < 10) ? "0" : "") + seconds; // Adding a 0 if seconds are below 10
                 
                 if(countdown_time>1){
-                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' secondes';
+                    document.getElementById('countdown_show').innerHTML = '{{__("Vous serez redirigé dans ")}}'+seconds+ ' {{__("secondes")}}';
                     var remain = countdown_time-1; // Substraction of 1 second
                     setTimeout("countdown("+remain+")", 1000);// Calling function every second
                 } else {
-                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' seconde';
+                    document.getElementById('countdown_show').innerHTML = '{{__("Vous serez redirigé dans ")}}'+seconds+ ' {{__("seconde")}}';
                     var remain = countdown_time-1; // Substraction of 1 second
                     setTimeout("countdown("+remain+")", 1000);// Calling function every second
                 }
@@ -72,20 +72,20 @@
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
         <div class="max-w-lg w-full bg-green-200 p-7 rounded-lg">
             @if ($civility_id==1)
-                <p class="text-center mb-5">Chère Madame {{$name}}, votre message a bien été envoyé !</p>
+                <p class="text-center mb-5">{{__("Chère Madame ")}}{{$name}}{{__(", votre message a bien été envoyé !")}}</p>
             @else
-                <p class="text-center mb-5">Cher Monsieur {{$name}}, votre message a bien été envoyé !</p>
+                <p class="text-center mb-5">{{__("Cher Monsieur ")}}{{$name}}{{__(", votre message a bien été envoyé !")}}</p>
             @endif
-            <p class="text-center my-5">Nous y répondrons dans les plus brefs délais</p>
+            <p class="text-center my-5">{{__("Nous y répondrons dans les plus brefs délais")}}</p>
             <p class="text-center mb-5" id="countdown_show"></p>
         </div>
     </div>
     <div class="min-h-full flex items-center justify-center pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-lg w-full bg-gray-200 p-7 rounded-lg">
-            <p class="underline text-center">Voici un résumé de ce qui nous est parvenu:</p>
-            <p class="mt-5"><span class="underline font-bold">Votre e-mail:</span> {{$email}}</p>
-            <p class="mt-3"><span class="underline font-bold">L'objet de votre message:</span> {{$messobject}}</p>
-            <p class="mt-3"><span class="underline font-bold">Votre message:</span> {{$message}}</p>
+            <p class="underline text-center">{{__("Voici un résumé de ce qui nous est parvenu:")}}</p>
+            <p class="mt-5"><span class="underline font-bold">{{__("Votre e-mail:")}}</span> {{$email}}</p>
+            <p class="mt-3"><span class="underline font-bold">{{__("L'objet de votre message:")}}</span> {{$messobject}}</p>
+            <p class="mt-3"><span class="underline font-bold">{{__("Votre message:")}}</span> {{$message}}</p>
         </div>
     </div>
     @include('footer')
