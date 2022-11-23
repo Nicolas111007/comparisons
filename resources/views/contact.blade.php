@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Contact</title>
+        <title>{{__("Contact")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
             }
         </script>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
     
     @include('menu')
     
@@ -45,14 +45,14 @@
                     @method('PUT')
                     <input type="hidden" id="identify" name="identify" value={{uniqid()}}>
                     <div>
-                        <p class="text-center text-3xl font-bold mb-10">Formulaire de contact</p>
+                        <p class="text-center text-3xl font-bold mb-10">{{__("Formulaire de contact")}}</p>
                     </div>
-                    <div><p class="mb-5"><span class="text-red-700 font-bold">*</span> Les champs marqués d'un astérisque sont obligatoires</p></div>
+                    <div><p class="mb-5"><span class="text-red-700 font-bold">*</span> {{__("Les champs marqués d'un astérisque sont obligatoires")}}</p></div>
                     <!-- Civility -->
                     <div class="text-center">
-                        <div class="mb-2"><label for="civility_id">Civilité <span class="text-red-700 font-bold">*</span></label></div>
+                        <div class="mb-2"><label for="civility_id">{{__("Civilité")}} <span class="text-red-700 font-bold">*</span></label></div>
                         <select id ="civility_id" name="civility_id" required >
-                            <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
+                            <option value="" label="Sélectionnez" disabled="disabled" selected="selected">{{__("Sélectionnez")}}</option>
                             @foreach ($civility as $civility)
                                 <option value={{$civility->id}}>{{$civility->title}}</option>
                             @endforeach
@@ -61,10 +61,10 @@
 
                     <!-- Name -->
                     <div>
-                        <label for="name">Nom <span class="text-red-700 font-bold">*</span></label>
+                        <label for="name">{{__("Nom")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('name')")
-                            <input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="Votre nom" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
+                            <input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="{{__("Votre nom")}}" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
                         @else
                             <input id="name" class="block mt-1 w-full" type="text" name="name" value="old('name')" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
                         @endif
@@ -72,10 +72,10 @@
                     
                     <!-- First name -->
                     <div>
-                        <label for="first_name">Prénom <span class="text-red-700 font-bold">*</span></label>
+                        <label for="first_name">{{__("Prénom")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('first_name')")
-                            <input id="first_name" class="block mt-1 w-full" type="text" name="first_name" placeholder="Votre prénom" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
+                            <input id="first_name" class="block mt-1 w-full" type="text" name="first_name" placeholder="{{__("Votre prénom")}}" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
                         @else
                             <input id="first_name" class="block mt-1 w-full" type="text" name="first_name" value="old('first_name')" pattern="[\D]{2,100}" minlength="2" maxlength="100" onkeyup="minMaj(this);" required />
                         @endif
@@ -83,10 +83,10 @@
                     
                     <!-- E-mail -->
                     <div>
-                        <label for="email">E-mail <span class="text-red-700 font-bold">*</span></label>
+                        <label for="email">{{__("E-mail")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('email')")
-                            <input id="email" class="block mt-1 w-full" type="text" name="email" placeholder="Votre e-mail" pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" minlength="5" maxlength="254" onkeyup="minLow(this)" required />
+                            <input id="email" class="block mt-1 w-full" type="text" name="email" placeholder="{{__("Votre e-mail")}}" pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" minlength="5" maxlength="254" onkeyup="minLow(this)" required />
                         @else
                             <input id="email" class="block mt-1 w-full" type="text" name="email" value="old('email')" pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" minlength="5" maxlength="254" onkeyup="minLow(this)" required />
                         @endif
@@ -94,10 +94,10 @@
 
                     <!-- Phone number -->
                     <div>
-                        <label for="phone">Numéro de téléphone</label>
+                        <label for="phone">{{__("Numéro de téléphone")}}</label>
 
                         @if (null !== "old('phone')")
-                            <input id="phone" class="block mt-1 w-full" type="text" name="phone" placeholder="ex: 012345678" maxlength="9" pattern="^0((10|11|12|13|14|15|16|19|42|43|50|51|52|53|54|55|56|57|58|59|60|61|63|64|65|67|68|69|71|80|81|82|83|84|85|86|87|89|92|93)[0-9]{6,6}|(2|3)[0-9]{7,7})$" />
+                            <input id="phone" class="block mt-1 w-full" type="text" name="phone" placeholder="{{__("ex")}}: 012345678" maxlength="9" pattern="^0((10|11|12|13|14|15|16|19|42|43|50|51|52|53|54|55|56|57|58|59|60|61|63|64|65|67|68|69|71|80|81|82|83|84|85|86|87|89|92|93)[0-9]{6,6}|(2|3)[0-9]{7,7})$" />
                         @else
                             <input id="phone" class="block mt-1 w-full" type="text" name="phone" value="old('phone')" maxlength="9" pattern="^0((10|11|12|13|14|15|16|19|42|43|50|51|52|53|54|55|56|57|58|59|60|61|63|64|65|67|68|69|71|80|81|82|83|84|85|86|87|89|92|93)[0-9]{6,6}|(2|3)[0-9]{7,7})$" />
                         @endif
@@ -105,10 +105,10 @@
                     
                     <!-- Mobile phone -->
                     <div>
-                        <label for="mobilephone">Numéro de GSM</label>
+                        <label for="mobilephone">{{__("Numéro de GSM")}}</label>
 
                         @if (null !== "old('mobilephone')")
-                            <input id="mobilephone" class="block mt-1 w-full" type="text" name="mobilephone" placeholder="ex: 0412345678" maxlength="10" pattern="^04((618|65[1-9]|66[0-7]|68[1-3])[0-9]{5,5}|(55|56|60|7[0-9]|8[3-9]|9[0-9])[0-9]{6,6})$" />
+                            <input id="mobilephone" class="block mt-1 w-full" type="text" name="mobilephone" placeholder="{{__("ex")}}: 0412345678" maxlength="10" pattern="^04((618|65[1-9]|66[0-7]|68[1-3])[0-9]{5,5}|(55|56|60|7[0-9]|8[3-9]|9[0-9])[0-9]{6,6})$" />
                         @else
                             <input id="mobilephone" class="block mt-1 w-full" type="text" name="mobilephone" value="old('mobilephone')" maxlength="10" pattern="^04((618|65[1-9]|66[0-7]|68[1-3])[0-9]{5,5}|(55|56|60|7[0-9]|8[3-9]|9[0-9])[0-9]{6,6})$" />
                         @endif
@@ -116,7 +116,7 @@
 
                     <!-- Message object -->
                     <div>
-                        <label for="messobject">Objet du message <span class="text-red-700 font-bold">*</span></label>
+                        <label for="messobject">{{__("Objet du message")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('messobject')")
                             <input id="messobject" class="block mt-1 w-full" type="text" name="messobject" maxlength="100" required />
@@ -127,7 +127,7 @@
 
                     <!-- Message -->
                     <div>
-                        <label for="message">Message <span class="text-red-700 font-bold">*</span></label>
+                        <label for="message">{{__("Message")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('message')")
                             <textarea id="message" class="block mt-1 w-full" name="message" maxlength="5000" rows="13" cols="33" required /></textarea>
@@ -143,5 +143,6 @@
                 </form>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Achat d'abonnement</title>
+        <title>{{__("Achat d'abonnement")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,11 +45,11 @@
                 seconds = ((seconds < 10) ? "0" : "") + seconds; // Adding a 0 if seconds are below 10
                 
                 if(countdown_time>1){
-                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' secondes';
+                    document.getElementById('countdown_show').innerHTML = '{{__("Vous serez redirigé dans")}} '+seconds+ ' {{__("secondes")}}';
                     var remain = countdown_time-1; // Substraction of 1 second
                     setTimeout("countdown("+remain+")", 1000);// Calling function every second
                 } else {
-                    document.getElementById('countdown_show').innerHTML = 'Vous serez redirigé dans '+seconds+ ' seconde';
+                    document.getElementById('countdown_show').innerHTML = '{{__("Vous serez redirigé dans")}} '+seconds+ ' {{__("seconde")}}';
                     var remain = countdown_time-1; // Substraction of 1 second
                     setTimeout("countdown("+remain+")", 1000);// Calling function every second
                 }
@@ -75,7 +75,7 @@
                 <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                     <div class="alert alert-success font-bold">
                         <p>{{Session::get('success')}}</p>
-                        <p class="font-bold">Nous vous remercions pour votre achat et votre confiance !</p>
+                        <p class="font-bold">{{__("Nous vous remercions pour votre achat et votre confiance !")}}</p>
                     </div>
                     <div><p class="text-center my-5" id="countdown_show"></p></div>
                 </div>
@@ -87,8 +87,8 @@
             <div class="flex justify-center pt-20 mt-36">
                 <div class="bg-green-200 rounded-lg w-0.85 p-7 mb-10">
                     <div class="alert alert-success font-bold">
-                        <p>Vous êtes maintenant abonné pour une période d'un an !</p>
-                        <p class="font-bold">Nous vous remercions pour votre achat et votre confiance !</p>
+                        <p>{{__("Vous êtes maintenant abonné pour une période d'un an !")}}</p>
+                        <p class="font-bold">{{__("Nous vous remercions pour votre achat et votre confiance !")}}</p>
                     </div>
                     <div><p class="text-center my-5" id="countdown_show"></p></div>
                 </div>
@@ -98,21 +98,21 @@
         @if (Auth::user()->sub_date<$oneyearago)
             <div class="flex items-center justify-center mb-20 mt-36">
                 <div class="bg-sky-400 p-5 rounded-lg w-1/3">
-                    <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline text-white"><p>Résumé de l'abonnement</p></div>
+                    <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline text-white"><p>{{__("Résumé de l'abonnement")}}</p></div>
                     <form method="post" action="{{route('subscribe.store')}}" id="subscribeForm">
                         @csrf
                         <table class="m-auto mb-10">
                             <tr>
-                                <td class="px-3 text-white">Prix HTVA</td>
+                                <td class="px-3 text-white">{{__("Prix HTVA")}}</td>
                                 <td class="px-3 text-white"><label for="subscription">49,58 €</label></td>
                             </tr>
                             <tr>
-                                <td class="px-3 text-white border border-t-0 border-l-0 border-r-0 border-b-white">TVA (21,00 %)</td>
+                                <td class="px-3 text-white border border-t-0 border-l-0 border-r-0 border-b-white">{{__("TVA")}} (21,00 %)</td>
                                 <td class="px-3 text-white border border-t-0 border-l-0 border-r-0 border-b-white"><label for="subscription">10,42 €</label></td>
                                 
                             </tr>
                             <tr>
-                                <td class="px-3 text-white font-bold">Prix TTC</td>
+                                <td class="px-3 text-white font-bold">{{__("Prix TTC")}}</td>
                                 <td class="px-3 text-white font-bold"><label for="subscription">60,00 €</label></td>
                             </tr>
                         </table>
@@ -122,8 +122,8 @@
                         <input id="sub_date" type="hidden" name="sub_date" value="<?php echo date('Y-m-d'); ?>" required />
                         <div id="card-element"></div>
                         <div class="flex justify-center mb-7">
-                            <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
-                            <button type="submit" id="submit-button" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">S'abonner</button>
+                            <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">{{__("Annuler")}}</button>
+                            <button type="submit" id="submit-button" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">{{__("S'abonner")}}</button>
                         </div>
                     </form>
                 </div>
@@ -137,13 +137,14 @@
             <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-36">
             <div class="max-w-lg w-full bg-green-200 p-7 rounded-lg">
                 @if (Auth::user()->civility_id==1)
-                    <p class="text-center mb-5">Chère Madame {{Auth::user()->name}}, vous êtes déjà abonnée !</p>
+                    <p class="text-center mb-5">{{__("Chère Madame{{__(" {{Auth::user()->name}}, {{__("vous êtes déjà abonnée !")}}</p>
                 @else
-                    <p class="text-center mb-5">Cher Monsieur {{Auth::user()->name}}, vous êtes déjà abonné !</p>
+                    <p class="text-center mb-5">{{__("Cher Monsieur{{__(" {{Auth::user()->name}}, {{__("vous êtes déjà abonné !")}}</p>
                 @endif
                 <p class="text-center mb-5" id="countdown_show"></p>
             </div>
         @endif
+        @include('footer')
         
     </body>
 </html>

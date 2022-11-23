@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ajout de fournisseur</title>
+        <title>{{__("Ajout de fournisseur")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,18 +24,18 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center mb-20 mt-36">
+        <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-1/2">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Données du fournisseur à ajouter</p></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>{{__("Données du fournisseur à ajouter")}}</p></div>
                 <form method="post" action="{{route('suppliermod.store')}}">
                     @csrf
                     <table class="m-auto mb-10">
                         <tr>
-                            <th class="px-3 text-white" colspan=3>Données du fournisseur</th>
+                            <th class="px-3 text-white" colspan=3>{{__("Données du fournisseur")}}</th>
                         </tr>
                         <tr>
-                            <th class="px-3 text-white"><label for="supplier_name">Nom du fournisseur</label></th>
-                            <th class="px-3 text-white"><label for="active_supplier">En activité</label></th>
+                            <th class="px-3 text-white"><label for="supplier_name">{{__("Nom du fournisseur")}}</label></th>
+                            <th class="px-3 text-white"><label for="active_supplier">{{__("En activité")}}</label></th>
                         </tr>
                         <tr>
                             <td class="font-bold px-3">
@@ -55,20 +55,20 @@
                         </tr>
                     </table>
                     <div class="flex justify-center mb-7">
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">Enregistrer</button>
-                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">{{__("Enregistrer")}}</button>
+                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">{{__("Annuler")}}</button>
                     </div>
                 </form>
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>Liste des fournisseurs</p></div>
-                <div class="mb-5"><p>Pour pouvoir supprimer un fournisseur, celui-ci ne doit plus avoir de contrats liés et doit être d'abord inactivé.</p></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><p>{{__("Liste des fournisseurs")}}</p></div>
+                <div class="mb-5"><p>{{__("Pour pouvoir supprimer un fournisseur, celui-ci ne doit plus avoir de contrats liés et doit être d'abord inactivé.")}}</p></div>
                 <table class="m-auto">
                     <tr>
-                        <th class="px-3 text-white">ID</th>
-                        <th class="px-3 text-white">Nom du fournisseur</th>
-                        <th class="px-3 text-white">En activité</th>
-                        <th class="px-3 text-white">Contrats liés</th>
-                        <th class="px-3 text-white">Modification</th>
-                        <th class="px-3 text-white">Suppression</th>
+                        <th class="px-3 text-white">{{__("ID")}}</th>
+                        <th class="px-3 text-white">{{__("Nom du fournisseur")}}</th>
+                        <th class="px-3 text-white">{{__("En activité")}}</th>
+                        <th class="px-3 text-white">{{__("Contrats liés")}}</th>
+                        <th class="px-3 text-white">{{__("Modification")}}</th>
+                        <th class="px-3 text-white">{{__("Suppression")}}</th>
                     </tr>
                     @foreach ($suppliers as $suppliers)
                         @if ($suppliers['deleted']==0)
@@ -76,7 +76,7 @@
                             @if ($suppliers['active_supplier']==1)
                                 <td class="px-3">{{$suppliers['id']}}</td>
                                 <td class="px-3">{{$suppliers['supplier_name']}}</td>
-                                <td class="font-bold text-center px-3">OUI</td>
+                                <td class="font-bold text-center px-3">{{__("OUI")}}</td>
                                 @php
                                     $i=0
                                 @endphp
@@ -91,7 +91,7 @@
                             @else
                                 <td class="font-bold text-red-800 px-3">{{$suppliers['id']}}</td>
                                 <td class="font-bold text-red-800 px-3">{{$suppliers['supplier_name']}}</td>
-                                <td class="font-bold text-red-800 text-center px-3">NON</td>
+                                <td class="font-bold text-red-800 text-center px-3">{{__("NON")}}</td>
                                 @php
                                     $i=0
                                 @endphp
@@ -104,14 +104,14 @@
                                 @endforeach
                                 <td class="font-bold text-red-800 text-center px-3">{{$i}}</td>
                             @endif
-                                <td class="px-3"><a href="{{route('suppliermod.edit', $suppliers->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3"><a href="{{route('suppliermod.edit', $suppliers->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">{{__("Modifier")}}</a></td>
                                 <td class="px-3">
                                     <form action="{{route('suppliermod.destroy', $suppliers->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     @if ($suppliers['active_supplier']==0 && $i==0)
                                         <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
-                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">{{__("Supprimer")}}</button>
                                     @endif
                                     
                                     </form>
@@ -121,9 +121,10 @@
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">
-                    <a href="{{route('suppliermod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un fournisseur</a>
+                    <a href="{{route('suppliermod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">{{__("Ajouter un fournisseur")}}</a>
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

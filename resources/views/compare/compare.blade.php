@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Comparaison</title>
+        <title>{{__("Comparaison")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased my-36">
     
     @include('menu')
     
@@ -32,24 +32,24 @@
                     @csrf
                     @method('PUT')
                     
-                    <div><p><span class="text-red-700 font-bold">*</span> Les champs marqués d'un astérisque sont obligatoires</p></div>
-                    <h2 class="text-center underline font-bold text-sky-400">Données personnelles</h2>
+                    <div><p><span class="text-red-700 font-bold">*</span> {{__("Les champs marqués d'un astérisque sont obligatoires")}}</p></div>
+                    <h2 class="text-center underline font-bold text-sky-400">{{__("Données personnelles")}}</h2>
                     <!-- Area -->
                     
                     <div class="text-center">
-                        <div><label for="area">Région <span class="text-red-700 font-bold">*</span></label></div>
+                        <div><label for="area">{{__("Région")}} <span class="text-red-700 font-bold">*</span></label></div>
                         <select id="area" name="area" required autofocus>
-                            <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
+                            <option value="" label="Sélectionnez" disabled="disabled" selected="selected">{{__("Sélectionnez")}}</option>
                             @foreach ($area as $area)
                                 <option value={{$area->id}}>{{$area->area_name}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <h2 class="text-center underline font-bold text-sky-400">Consommation d'électricité</h2>
+                    <h2 class="text-center underline font-bold text-sky-400">{{__("Consommation d'électricité")}}</h2>
                     <!-- Mono / bi-day consumption -->
                     <div>
-                        <label for="monobiday">Consommation Mono-horaire / bi-horaire jour <span class="text-red-700 font-bold">*</span></label>
+                        <label for="monobiday">{{__("Consommation Mono-horaire / bi-horaire jour")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('monobiday')")
                             <x-input id="monobiday" class="block mt-1 w-full" type="text" name="monobiday" :value="1000" max=49999 maxlength="5" pattern="^([1-9][0-9]{0,3}|[1-4][0-9]{4,4})$" />
@@ -61,7 +61,7 @@
 
                     <!-- Bi-night consumption -->
                     <div>
-                        <label for="binight">Consommation Bi-horaire nuit</label>
+                        <label for="binight">{{__("Consommation Bi-horaire nuit")}}</label>
 
                         @if (null !== "old('monobiday')")
                             <x-input id="binight" class="block mt-1 w-full" type="text" name="binight" :value="0" max=49999 maxlength="5" pattern="^(0*|[1-9][0-9]{0,3}|[1-4][0-9]{4,4})$" />
@@ -73,7 +73,7 @@
 
                     <!-- Excl-night consumption -->
                     <div>
-                        <label for="exclnight">Consommation Exclusif nuit</label>
+                        <label for="exclnight">{{__("Consommation Exclusif nuit")}}</label>
 
                         @if (null !== "old('monobiday')")
                             <x-input id="exclnight" class="block mt-1 w-full" type="text" name="exclnight" :value="0" max=49999 maxlength="5" pattern="^(0*|[1-9][0-9]{0,3}|[1-4][0-9]{4,4})$" />
@@ -84,10 +84,10 @@
 
                     <!-- Supplier -->
                     <div>
-                        <label for="suppliercont">Fournisseur et contrat <span class="text-red-700 font-bold">*</span></label>
+                        <label for="suppliercont">{{__("Fournisseur et contrat")}} <span class="text-red-700 font-bold">*</span></label>
                         <div>
                             <select id="suppliercont" name="suppliercont" required>
-                                <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
+                                <option value="" label="Sélectionnez" disabled="disabled" selected="selected">{{__("Sélectionnez")}}</option>
                                     @foreach ($suppliers as $suppliers)
                                         <optgroup label={{$suppliers->supplier_name}}>
                                             @foreach ($contracts_en1_supp1 as $contracts_en1_supp1a)
@@ -160,7 +160,7 @@
 
                     <!-- Contract beginning -->
                     <div>
-                        <label for="contbeg">Date de début de contrat <span class="text-red-700 font-bold">*</span></label>
+                        <label for="contbeg">{{__("Date de début de contrat")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('monobiday')")
                             <x-input id="contbeg" class="block mt-1 w-full" type="date" name="contbeg" :value="0" min="2022-02-01" max="2022-04-30" required />
@@ -169,10 +169,10 @@
                         @endif
                     </div>
 
-                    <h2 class="text-center underline font-bold text-sky-400">Consommation de gaz</h2>
+                    <h2 class="text-center underline font-bold text-sky-400">{{__("Consommation de gaz")}}</h2>
                     <!-- Gas consumption -->
                     <div>
-                        <label for="gascons">Consommation de gaz (kWh) <span class="text-red-700 font-bold">*</span></label>
+                        <label for="gascons">{{__("Consommation de gaz (kWh)")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('gascons')")
                             <x-input id="gascons" class="block mt-1 w-full" type="text" name="gascons" :value="1000" max=99999 maxlength="5" pattern="^[1-9][0-9]{0,4}$" />
@@ -184,10 +184,10 @@
 
                     <!-- Supplier -->
                     <div>
-                        <label for="suppliercontgas">Fournisseur et contrat <span class="text-red-700 font-bold">*</span></label>
+                        <label for="suppliercontgas">{{__("Fournisseur et contrat")}} <span class="text-red-700 font-bold">*</span></label>
                         <div>
                             <select id="suppliercontgas" name="suppliercontgas" required>
-                                <option value="" label="Sélectionnez" disabled="disabled" selected="selected">Sélectionnez</option>
+                                <option value="" label="Sélectionnez" disabled="disabled" selected="selected">{{__("Sélectionnez")}}</option>
                                     @foreach ($suppliersgas as $suppliersgas)
                                         <optgroup label={{$suppliersgas->supplier_name}}>
                                             @foreach ($contracts_en2_supp1 as $contracts_en2_supp1a)
@@ -261,7 +261,7 @@
 
                     <!-- Contract beginning -->
                     <div>
-                        <label for="contbeggas">Date de début de contrat <span class="text-red-700 font-bold">*</span></label>
+                        <label for="contbeggas">{{__("Date de début de contrat")}} <span class="text-red-700 font-bold">*</span></label>
 
                         @if (null !== "old('monobiday')")
                             <x-input id="contbeggas" class="block mt-1 w-full" type="date" name="contbeggas" :value="0" min="2022-02-01" max="2022-04-30" required />
@@ -283,5 +283,6 @@
                 </form>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>

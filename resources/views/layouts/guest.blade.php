@@ -14,7 +14,7 @@
         <!-- Scripts -->
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans text-gray-900 antialiased mb-16">
             {{ $slot }}
         </div>
     </body>

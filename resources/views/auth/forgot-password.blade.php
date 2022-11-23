@@ -1,5 +1,5 @@
 @include('menu')
-<title>Mot de passe oublié</title>
+<title>{{__("Mot de passe oublié")}}</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -36,3 +36,4 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+@include('footer')

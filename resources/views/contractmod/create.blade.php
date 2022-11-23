@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ajout de contrat</title>
+        <title>{{__("Ajout de contrat")}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,24 +24,24 @@
     <body class="antialiased">
         @include('menu')
 
-        <div class="flex items-center justify-center mb-20 mt-36">
+        <div class="flex items-center justify-center mb-36 mt-36">
             <div class="bg-sky-400 p-5 rounded-lg w-fit">
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>Données du contrat à ajouter</h2></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>{{__("Données du contrat à ajouter")}}</h2></div>
                 <form method="post" action="{{route('contractmod.store')}}">
                     @csrf
                     
                     <table class="m-auto mb-10">
                         <tr>
-                            <th class="px-3 text-white" colspan=8>Données du contrat</th>
+                            <th class="px-3 text-white" colspan=8>{{__("Données du contrat")}}</th>
                         </tr>
                         <tr>
-                            <th class="px-3 text-white"><label for="suppliers_id">ID du Fournisseur</label></th>
-                            <th class="px-3 text-white"><label for="energy_type_id">ID type d'énergie</label></th>
-                            <th class="px-3 text-white"><label for="contract_name">Nom du contrat</label></th>
-                            <th class="px-3 text-white"><label for="var_fix">Variable/Fixe</label></th>
-                            <th class="px-3 text-white"><label for="time_contract">Indexation</label></th>
-                            <th class="px-3 text-white"><label for="abbreviation">Abbréviation</label></th>
-                            <th class="px-3 text-white"><label for="active_contract">Actif</label></th>
+                            <th class="px-3 text-white"><label for="suppliers_id">{{__("ID du Fournisseur")}}</label></th>
+                            <th class="px-3 text-white"><label for="energy_type_id">{{__("ID type d'énergie")}}</label></th>
+                            <th class="px-3 text-white"><label for="contract_name">{{__("Nom du contrat")}}</label></th>
+                            <th class="px-3 text-white"><label for="var_fix">{{__("Variable/Fixe")}}</label></th>
+                            <th class="px-3 text-white"><label for="time_contract">{{__("Indexation")}}</label></th>
+                            <th class="px-3 text-white"><label for="abbreviation">{{__("Abbréviation")}}</label></th>
+                            <th class="px-3 text-white"><label for="active_contract">{{__("Actif")}}</label></th>
                         </tr>
                         <tr>
                             <td class="font-bold px-3">
@@ -96,24 +96,24 @@
                         </tr>
                     </table>
                     <div class="flex justify-center mb-7">
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">Enregistrer</button>
-                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">Annuler</button>
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-green-800">{{__("Enregistrer")}}</button>
+                        <button type="button" onclick="javascript:history.back(-1);" class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 mx-4 bg-red-800">{{__("Annuler")}}</button>
                     </div>
                 </form>
-                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>Liste des contrats</h2></div>
+                <div class="pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8 font-bold text-center underline"><h2>{{__("Liste des contrats")}}</h2></div>
                 <table class="m-auto">
                     <tr>
-                        <th class="px-3 text-white">ID</th>
-                        <th class="px-3 text-white">Fournisseur</th>
-                        <th class="px-3 text-white">Type d'énergie</th>
-                        <th class="px-3 text-white">Nom du contrat</th>
-                        <th class="px-3 text-white">Variable/Fixe</th>
-                        <th class="px-3 text-white">Indexation</th>
-                        <th class="px-3 text-white">Abbréviation</th>
-                        <th class="px-3 text-white">Actif</th>
-                        <th class="px-3 text-white">Prix liés</th>
-                        <th class="px-3 text-white">Modification</th>
-                        <th class="px-3 text-white">Suppression</th>
+                        <th class="px-3 text-white">{{__("ID")}}</th>
+                        <th class="px-3 text-white">{{__("Fournisseur")}}</th>
+                        <th class="px-3 text-white">{{__("Type d'énergie")}}</th>
+                        <th class="px-3 text-white">{{__("Nom du contrat")}}</th>
+                        <th class="px-3 text-white">{{__("Variable/Fixe")}}</th>
+                        <th class="px-3 text-white">{{__("Indexation")}}</th>
+                        <th class="px-3 text-white">{{__("Abbréviation")}}</th>
+                        <th class="px-3 text-white">{{__("Actif")}}</th>
+                        <th class="px-3 text-white">{{__("Prix liés")}}</th>
+                        <th class="px-3 text-white">{{__("Modification")}}</th>
+                        <th class="px-3 text-white">{{__("Suppression")}}</th>
                     </tr>
                     @foreach ($contracts as $contracts)
                         @if ($contracts['deleted']==0)
@@ -126,19 +126,19 @@
                                         @endif
                                     @endforeach
                                     @if ($contracts['energy_type_id']==1)
-                                        <td class="px-3 bg-yellow-400">Électricité</td>
+                                        <td class="px-3 bg-yellow-400">{{__("Électricité")}}</td>
                                     @else
-                                        <td class="px-3">Gaz</td>
+                                        <td class="px-3">{{__("Gaz")}}</td>
                                     @endif
                                     <td class="px-3">{{$contracts['contract_name']}}</td>
                                     @if ($contracts['var_fix']==0)
-                                        <td class="px-3">Variable</td>
+                                        <td class="px-3">{{__("Variable")}}</td>
                                     @else
-                                        <td class="px-3">Fixe</td>
+                                        <td class="px-3">{{__("Fixe")}}</td>
                                     @endif
                                     <td class="px-3">{{$contracts['time_contract']}}</td>
                                     <td class="px-3">{{$contracts['abbreviation']}}</td>
-                                    <td class="font-bold text-center px-3">OUI</td>
+                                    <td class="font-bold text-center px-3">{{__("OUI")}}</td>
                                     @php
                                         $i=0
                                     @endphp
@@ -158,19 +158,19 @@
                                         @endif
                                     @endforeach
                                     @if ($contracts['energy_type_id']==1)
-                                        <td class="font-bold text-red-800 px-3 bg-yellow-400">Électricité</td>
+                                        <td class="font-bold text-red-800 px-3 bg-yellow-400">{{__("Électricité")}}</td>
                                     @else
-                                        <td class="font-bold text-red-800 px-3">Gaz</td>
+                                        <td class="font-bold text-red-800 px-3">{{__("Gaz")}}</td>
                                     @endif
                                     <td class="font-bold text-red-800 px-3">{{$contracts['contract_name']}}</td>
                                     @if ($contracts['var_fix']==0)
-                                        <td class="font-bold text-red-800 px-3">Variable</td>
+                                        <td class="font-bold text-red-800 px-3">{{__("Variable")}}</td>
                                     @else
-                                        <td class="font-bold text-red-800 px-3">Fixe</td>
+                                        <td class="font-bold text-red-800 px-3">{{__("Fixe")}}</td>
                                     @endif
                                     <td class="font-bold text-red-800 px-3">{{$contracts['time_contract']}}</td>
                                     <td class="font-bold text-red-800 px-3">{{$contracts['abbreviation']}}</td>
-                                    <td class="font-bold text-red-800 text-center px-3">NON</td>
+                                    <td class="font-bold text-red-800 text-center px-3">{{__("NON")}}</td>
                                     @php
                                         $i=0
                                     @endphp
@@ -183,14 +183,14 @@
                                     @endforeach
                                     <td class="font-bold text-red-800 text-center px-3">{{$i}}</td>
                                 @endif
-                                <td class="px-3"><a href="{{route('contractmod.edit', $contracts->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">Modifier</a></td>
+                                <td class="px-3"><a href="{{route('contractmod.edit', $contracts->id)}}" class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-green-800">{{__("Modifier")}}</a></td>
                                 <td class="px-3">
                                     <form action="{{route('contractmod.destroy', $contracts->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     @if ($contracts['active_contract']==0 && $i==0)
                                         <x-input id="deleted" class="block mt-1 w-full" type="hidden" name="deleted" :value="1" />
-                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">Supprimer</button>
+                                        <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 bg-red-800" type="submit">{{__("Supprimer")}}</button>
                                     @endif
                                     
                                     </form>
@@ -200,9 +200,10 @@
                     @endforeach
                 </table>
                 <div class="lg:flex justify-center mt-7">
-                    <a href="{{route('contractmod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">Ajouter un contrat</a>
+                    <a href="{{route('contractmod.create')}}" class="m-auto inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 bg-green-800">{{__("Ajouter un contrat")}}</a>
                 </div>
             </div>
         </div>
+        @include('footer')
     </body>
 </html>
